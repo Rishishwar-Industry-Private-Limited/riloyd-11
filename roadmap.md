@@ -65,3 +65,7 @@
 - [x] Homepage stats updated: Funding Enabled ₹150Cr+, Industries Served 15+, Businesses Advised 75+, Startup Ideas Analyzed 200+
 - [x] Footer: Global Presence moved below Contact (desktop & tablet), logo beside the heading, countries in 4 columns
 - [ ] Desktop footer: Contact above, Global Presence below (logo beside the "Global Presence" heading, countries in 4 columns); mobile and tablet must stay exactly as they are
+
+- [x] Popup: remove white ring, 3-panel layout on tablet/desktop
+- [x] Footer: social icons with heading 6mm below Explore/Our People
+- [x] Footer: show both office addresses under Contact on desktop

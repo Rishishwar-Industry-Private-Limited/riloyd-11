@@ -4,6 +4,7 @@ import { CheckCircle2, Rocket, X } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import posterAsset from "@/assets/local/funding-programme-poster.webp";
+import winnersImg from "@/assets/popup-winners.jpg";
 import {
   fundingApplicationSchema,
   submitFundingApplication,
@@ -76,16 +77,16 @@ export function FundingPopup() {
             type="button"
             onClick={() => change(false)}
             aria-label="Close"
-            className="absolute right-3 top-3 z-10 block! rounded-full bg-background/80 p-1.5 text-foreground hover:bg-background"
+            className="absolute right-3 top-3 z-10 block! rounded-full bg-background/80 p-1.5 text-foreground outline-none ring-0 hover:bg-background focus:outline-none focus-visible:ring-0"
           >
             <X className="h-4 w-4" />
           </button>
-          <div className={showForm ? "grid" : "grid h-[60vh] grid-rows-[minmax(0,4fr)_minmax(0,1fr)] sm:h-[min(86vh,61vw,32rem)] sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:grid-rows-1"}>
+          <div className={showForm ? "grid" : "grid h-[60vh] grid-rows-[minmax(0,4fr)_minmax(0,1fr)] sm:h-[min(86vh,61vw,32rem)] sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:grid-rows-[minmax(0,1fr)_minmax(0,1fr)]"}>
             {!showForm && <button
               type="button"
               onClick={() => change(false)}
               aria-label="Close funding programme popup"
-              className="relative block h-full min-h-0 w-full cursor-zoom-out bg-background"
+              className="relative block h-full min-h-0 w-full cursor-zoom-out bg-background outline-none sm:row-span-2"
             >
               <img decoding="async"
                 src={posterAsset}
@@ -94,10 +95,8 @@ export function FundingPopup() {
                 height={1448}
                 className="h-full w-full object-contain"
               />
-              <span className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-background/80 px-2.5 py-1 text-[10px] font-medium text-muted-foreground hidden">
-                Tap to close
-              </span>
             </button>}
+            {!showForm && <img src={winnersImg} alt="Startup founders celebrating a funding grant win" width={1200} height={640} loading="lazy" decoding="async" className="hidden h-full min-h-0 w-full object-cover sm:block" />}
             <div className={showForm ? "bg-background p-2.5 sm:p-5" : "min-h-0 overflow-y-auto bg-background p-2 sm:p-3"}>
               {!showForm && !code && <Button type="button" onClick={() => setShowForm(true)} className="mb-1 h-7 w-full gap-1 rounded-md px-1 text-[10px] font-bold uppercase">
                 <Rocket className="h-3 w-3" /> Register Now
