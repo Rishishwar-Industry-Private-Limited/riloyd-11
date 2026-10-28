@@ -69,3 +69,6 @@
 - [x] Popup: remove white ring, 3-panel layout on tablet/desktop
 - [x] Footer: social icons with heading 6mm below Explore/Our People
 - [x] Footer: show both office addresses under Contact on desktop
+- [x] Popup: new poster on left
+- [x] Backend: profiles signed-in only, approval publishes profile
+- [ ] Admin account (waiting on user email)
