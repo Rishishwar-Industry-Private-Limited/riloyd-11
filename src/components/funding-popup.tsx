@@ -4,7 +4,7 @@ import { CheckCircle2, Rocket, X } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import posterAsset from "@/assets/local/funding-programme-poster.webp";
-import winnersImg from "@/assets/popup-winners.jpg";
+import winnersImg from "@/assets/popup-event.webp";
 import {
   fundingApplicationSchema,
   submitFundingApplication,
@@ -96,7 +96,7 @@ export function FundingPopup() {
                 className="h-full w-full object-contain"
               />
             </button>}
-            {!showForm && <img src={winnersImg} alt="Startup founders celebrating a funding grant win" width={1200} height={640} loading="lazy" decoding="async" className="hidden h-full min-h-0 w-full object-cover sm:block" />}
+            {!showForm && <img src={winnersImg} alt="Riloyd startup funding event entrance" width={1200} height={675} loading="lazy" decoding="async" className="hidden h-full min-h-0 w-full object-cover sm:block" />}
             <div className={showForm ? "bg-background p-2.5 sm:p-5" : "min-h-0 overflow-y-auto bg-background p-2 sm:p-3"}>
               {!showForm && !code && <Button type="button" onClick={() => setShowForm(true)} className="mb-1 h-7 w-full gap-1 rounded-md px-1 text-[10px] font-bold uppercase">
                 <Rocket className="h-3 w-3" /> Register Now
