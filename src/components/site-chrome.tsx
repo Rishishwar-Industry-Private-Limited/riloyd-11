@@ -79,7 +79,9 @@ export function SiteFooter() {
   return <footer className="border-t border-border bg-background text-foreground">
     <div className="mx-auto grid max-w-[1380px] grid-cols-6 gap-x-4 gap-y-[2mm] px-5 pt-[5mm] pb-7 sm:gap-y-4 sm:px-6 lg:px-12 xl:grid-cols-[1.6fr_.6fr_.75fr_.8fr_.85fr_.85fr_.9fr_.9fr]">
       <div className="order-1 col-span-6 xl:col-span-1"><div className="flex items-center gap-[2mm] sm:block"><Link to="/" aria-label="Riloyd home" className="-ml-[3mm] block w-[40%] shrink-0 sm:w-auto"><img src={theme === "light" ? darkLogo : logoAsset} alt="Riloyd" loading="lazy" className="h-auto w-full sm:w-36" decoding="async" /></Link><p className="flex-1 min-w-0 text-[11px] leading-[1.5] text-muted-foreground sm:mt-[2mm] sm:text-xs"><span className="block">RILOYD helps ambitious businesses</span><span className="block">find expertise, capital and</span><span className="block">opportunities for sustainable growth.</span></p></div></div>
-      <div className="order-2 col-span-2 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Explore</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/">Home</Link><Link to="/about">About</Link><Link to="/contact">Contact</Link><Link to="/register">Register</Link><Link to="/funding-programme">Funding Programme</Link></div></div>
+      <div className="order-2 col-span-2 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Explore</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/">Home</Link><Link to="/about">About</Link><Link to="/contact">Contact</Link><Link to="/register">Register</Link><Link to="/funding-programme">Funding Programme</Link></div>
+        <div className="mt-[6mm]"><h2 className="text-xs font-bold">Follow Us</h2><div className="mt-3 flex items-center gap-2"><a className="social-link" href="https://www.linkedin.com/company/145354558" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on LinkedIn"><Linkedin className="h-4 w-4" aria-hidden="true" /></a><a className="social-link" href="https://www.instagram.com/riloyd.in/" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on Instagram"><Instagram className="h-4 w-4" aria-hidden="true" /></a></div></div>
+      </div>
       <div className="order-3 col-span-2 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our People</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/investors">Our Investors</Link><Link to="/mentors">Our Mentors</Link><Link to="/team">Our Team Members</Link><Link to="/startups">Our Startups</Link><Link to="/businesses">Our Businesses</Link></div></div>
       <div className="order-4 col-span-2 row-span-2 sm:col-span-2 sm:row-span-1 xl:col-span-1"><h2 className="text-xs font-bold">About Us</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{aboutLinks.map((l) => <Link key={l.hash} to="/about" hash={l.hash}>{l.label}</Link>)}</div></div>
       <div className="contents sm:order-last sm:col-span-2 sm:block sm:min-w-0 xl:contents">
@@ -105,7 +107,7 @@ export function SiteFooter() {
           <a className="font-medium text-foreground hover:underline" href="mailto:careers@riloyd.in">careers@riloyd.in</a>
           <a className="font-medium text-foreground hover:underline" href="mailto:idea@riloyd.in">idea@riloyd.in</a>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden">
+        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden xl:mt-5 xl:grid">
           <div>
             <h3 className="text-xs font-bold text-foreground">Registered Office</h3>
             <p className="mt-3">Rishishwar Industry Pvt. Ltd.<br />Mahadaji Nagar, Lashkar,<br />Gird, Gwalior,<br />Madhya Pradesh &ndash; 474001</p>
@@ -115,7 +117,6 @@ export function SiteFooter() {
             <p className="mt-3">Gincube Center, Motimal,<br />Lashkar, Gird,<br />Gwalior &ndash; 474009</p>
           </div>
         </div>
-        <div className="mt-4 flex items-center gap-2"><a className="social-link" href="https://www.linkedin.com/company/145354558" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on LinkedIn"><Linkedin className="h-4 w-4" aria-hidden="true" /></a><a className="social-link" href="https://www.instagram.com/riloyd.in/" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on Instagram"><Instagram className="h-4 w-4" aria-hidden="true" /></a></div>
       </div>
       </div>
       <div className="order-7 col-span-3 sm:order-5 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our Services</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{serviceOrder.map((key) => { const service = serviceConfigs[key]; return service ? <Link key={key} to="/services/$slug" params={{ slug: service.slug }}>{service.shortTitle}</Link> : null; })}</div></div>
