@@ -107,7 +107,7 @@ export function SiteFooter() {
           <a className="font-medium text-foreground hover:underline" href="mailto:careers@riloyd.in">careers@riloyd.in</a>
           <a className="font-medium text-foreground hover:underline" href="mailto:idea@riloyd.in">idea@riloyd.in</a>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden xl:mt-5 xl:grid">
+        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden xl:mt-5 xl:grid xl:grid-cols-1">
           <div>
             <h3 className="text-xs font-bold text-foreground">Registered Office</h3>
             <p className="mt-3">Rishishwar Industry Pvt. Ltd.<br />Mahadaji Nagar, Lashkar,<br />Gird, Gwalior,<br />Madhya Pradesh &ndash; 474001</p>
