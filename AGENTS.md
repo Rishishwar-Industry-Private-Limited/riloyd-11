@@ -8,3 +8,21 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- This remix starts with an empty Drizzle migration history; create future database changes through the migration tool rather than restoring the source project's copied migrations, so the new database has its own history.
+- Website registrations and enquiries use validated server functions and a durable submission limiter; admin inbox reads/reviews use authenticated RLS-scoped functions, and registration documents stay in private Storage with admin-authorized download by application ID, so visitors cannot access other people's submissions.
+- Preserve the summit popup's Zoho embed as its existing submission destination; do not imply those external submissions are in the local admin inbox without a verified synchronization integration.
+- Generate submission PDFs and Excel workbooks lazily in the browser from authenticated inbox data; prepare blobs before download clicks and export both inboxes across all pages, so private details remain admin-only and mobile downloads retain user activation.
+- Customer reports use a private bucket and admin-only metadata policies; a rate-limited public server function verifies both report number and publish date before issuing a short-lived download URL, so the footer Downloads page never lists private reports.
+- Setup diagnostics use an admin-authorized STABLE SECURITY INVOKER catalog RPC and metadata-only storage reads; compare retained SQL declarations plus an explicit legacy application baseline while Drizzle's managed placeholder is empty, and report incomplete coverage rather than claiming schema parity.
+
+- Keep each detailed service layout in `src/components/services/` and select it by slug in `src/routes/services.$slug.tsx`, so service URLs retain one shared metadata and navigation route.
+- Keep the Global Presence experience in its own `/global-presence` route, but reach it only from the footer while it is unpublished: no header navigation item and no promoted links elsewhere, and `noindex` on both routes, so the pages stay out of sight until the user re-enables them.
+- Keep the full company story in a dedicated `/about` route, while the homepage retains only a short About teaser, so the navigation and metadata remain clear.
+- Keep market content centralized and render each country through `/global-presence/$slug`, so the hub and the footer country list stay consistent.
+- Keep Investors, Mentors and Team as public pages; employee verification goes through security-definer database functions and admins manage records at `/admin`, so codes stay hashed and never reach the browser.
+- Optimize static images offline before serving them; preserve dimensions and transparency, use lossless compression for logos, and keep the original format when conversion would increase file size, so appearance stays consistent without runtime image processing.
+- Import static website images directly from local frontend asset files so managed Git sync includes the actual image bytes; retain unused historical CDN pointers without deleting hosted assets to preserve earlier deployments.
+- Investor, Mentor and Team profiles live in the backend, are readable only by signed-in users and editable only by admins at /admin, so no sample or private profile data ships in the site code.
+- Approving a registration (status approved) publishes a public-safe profile (no email/phone) to the matching Investors/Mentors/Startups/Businesses page via a database trigger keyed by source_application_id; any other status removes it, so admin review is the single publish switch.
+- Admin AI review summaries call the AI Gateway only from an admin-checked server function and exclude applicant contact details from the prompt, so private data stays minimal.
