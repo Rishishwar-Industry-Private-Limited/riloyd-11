@@ -25,18 +25,19 @@ const baseline = (name: string, fields: string): Table => ({ name, rls: true, co
   if (!column || !type) return [];
   return [{ name: column, type: normalizeType(type.replace('?', '')), nullable: type.endsWith('?') }];
 }) });
+const parsedTables = migrationSources.flatMap(parseSqlTables);
 export const expectedTables: Table[] = [
-  ...migrationSources.flatMap(parseSqlTables),
-  baseline('employees', 'id:uuid employee_id:text code_hash:text full_name:text photo_url:text? designation:text department:text status:text valid_until:date? created_at:timestamptz updated_at:timestamptz'),
-  baseline('employee_verification_attempts', 'id:bigint employee_id:text success:boolean created_at:timestamptz'),
-  baseline('people_profiles', 'id:uuid person_group:text slug:text name:text role:text location:text focus:text[] summary:text bio:text photo_url:text? sort_order:integer created_at:timestamptz'),
+  ...parsedTables,
   ...[
+    baseline('employees', 'id:uuid employee_id:text code_hash:text full_name:text photo_url:text? designation:text department:text status:text valid_until:date? created_at:timestamptz updated_at:timestamptz'),
+    baseline('employee_verification_attempts', 'id:bigint employee_id:text success:boolean created_at:timestamptz'),
+    baseline('people_profiles', 'id:uuid person_group:text slug:text name:text role:text location:text focus:text[] summary:text bio:text photo_url:text? sort_order:integer created_at:timestamptz'),
     baseline('contact_submissions', 'id:uuid name:text email:text phone:text service:text industry:text message:text status:text admin_notes:text created_at:timestamptz'),
     baseline('customer_reports', 'id:uuid report_number:text publish_date:date title:text category:text file_path:text file_name:text file_size:int4 active:bool created_at:timestamptz'),
     baseline('form_submission_limits', 'key_hash:text window_started_at:timestamptz attempts:int4'),
     baseline('registration_applications', 'id:uuid application_code:text category:text full_name:text email:text phone:text details:jsonb document_path:text? document_name:text? status:text admin_notes:text created_at:timestamptz'),
-  ].filter(t => !migrationSources.some(src => src.includes(`public.${t.name} (`))),
-  baseline('user_roles', 'id:uuid user_id:uuid role:app_role'),
+    baseline('user_roles', 'id:uuid user_id:uuid role:app_role'),
+  ].filter(t => !parsedTables.some(p => p.name === t.name)),
 ];
 export const expectedFunctions = ['has_role', 'admin_save_employee', 'verify_employee', 'consume_form_submission_limit'];
 export const drizzleSchemaEmpty = !/\b(?:pgTable|pgSchema)\s*\(/.test(drizzleSource);
