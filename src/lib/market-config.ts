@@ -1,8 +1,6 @@
 import type { StaticImageData } from "./service-types";
-import indiaLogo from "@/assets/local/regions/riloyd-india-transparent.png.optimized.webp";
 import britainLogo from "@/assets/local/regions/riloyd-britain-transparent-light-theme.webp";
 import uaeLogo from "@/assets/local/regions/riloyd-uae-transparent-light-theme.webp";
-import canadaLogo from "@/assets/local/regions/riloyd-canada-transparent.png.optimized.webp";
 import americaLogo from "@/assets/local/regions/riloyd-america-transparent.png.optimized.webp";
 import singaporeLogo from "@/assets/local/regions/riloyd-singapore-transparent-light-theme.webp";
 import europeLogo from "@/assets/local/regions/riloyd-europe-transparent-light-theme.webp";
@@ -15,6 +13,8 @@ import uaeLogoDarkTheme from "@/assets/local/regions/riloyd-uae-transparent-dark
 import singaporeLogoDarkTheme from "@/assets/local/regions/riloyd-singapore-transparent-dark-theme.webp";
 import europeLogoDarkTheme from "@/assets/local/regions/riloyd-europe-transparent-dark-theme.webp";
 import australiaLogoDarkTheme from "@/assets/local/regions/riloyd-australia-transparent-dark-theme.webp";
+import canadaLogoDarkTheme from "@/assets/local/regions/riloyd-canada-transparent-dark-theme.webp";
+import indiaLogoDarkTheme from "@/assets/local/regions/riloyd-india-transparent-dark-theme.webp";
 import indiaImageAsset from "@/assets/local/global-india.jpg.optimized.webp";
 const indiaImage = indiaImageAsset;
 import britainImageAsset from "@/assets/local/global-britain.jpg.optimized.webp";
