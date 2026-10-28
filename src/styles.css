@@ -28,6 +28,7 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
+  --color-footer: var(--footer);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -67,6 +68,7 @@
 :root {
   --radius: 0.375rem;
   --background: oklch(0.055 0 0);
+  --footer: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);
   --soft: oklch(0.84 0 0);
   --surface: oklch(0.085 0 0);
@@ -141,6 +143,7 @@
    switches surfaces without changing the brand's red accent. */
 .light {
   --background: oklch(0.978 0.003 80);
+  --footer: oklch(0.94 0.003 80);
   --foreground: oklch(0.16 0.005 40);
   --soft: oklch(0.16 0.005 40);
   --surface: oklch(0.94 0.004 80);

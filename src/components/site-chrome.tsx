@@ -76,7 +76,7 @@ export function SiteFooter() {
     setTheme(document.documentElement.classList.contains("light") ? "light" : "dark");
     return () => observer.disconnect();
   }, []);
-  return <footer className="border-t border-border bg-background text-foreground">
+  return <footer className="border-t border-border bg-footer text-foreground">
     <div className="mx-auto grid max-w-[1380px] grid-cols-6 gap-x-4 gap-y-[2mm] px-5 pt-[5mm] pb-7 sm:gap-y-4 sm:px-6 lg:px-12 xl:grid-cols-[1.6fr_.6fr_.75fr_.8fr_.85fr_.85fr_.9fr_.9fr]">
       <div className="order-1 col-span-6 xl:col-span-1"><div className="flex items-center gap-[2mm] sm:block"><Link to="/" aria-label="Riloyd home" className="-ml-[3mm] block w-[40%] shrink-0 sm:w-auto"><img src={theme === "light" ? darkLogo : logoAsset} alt="Riloyd" loading="lazy" className="h-auto w-full sm:w-36" decoding="async" /></Link><p className="flex-1 min-w-0 text-[11px] leading-[1.5] text-muted-foreground sm:mt-[2mm] sm:text-xs"><span className="block">RILOYD helps ambitious businesses</span><span className="block">find expertise, capital and</span><span className="block">opportunities for sustainable growth.</span></p></div></div>
       <div className="order-2 col-span-2 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Explore</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/">Home</Link><Link to="/about">About</Link><Link to="/contact">Contact</Link><Link to="/register">Register</Link><Link to="/funding-programme">Funding Programme</Link></div>
@@ -107,14 +107,14 @@ export function SiteFooter() {
           <a className="font-medium text-foreground hover:underline" href="mailto:careers@riloyd.in">careers@riloyd.in</a>
           <a className="font-medium text-foreground hover:underline" href="mailto:idea@riloyd.in">idea@riloyd.in</a>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden xl:mt-5 xl:grid xl:grid-cols-1">
+        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden xl:mt-5 xl:grid xl:grid-cols-1 xl:gap-y-3 xl:text-[10.5px]">
           <div>
             <h3 className="text-xs font-bold text-foreground">Registered Office</h3>
-            <p className="mt-3">Rishishwar Industry Pvt. Ltd.<br />Mahadaji Nagar, Lashkar,<br />Gird, Gwalior,<br />Madhya Pradesh &ndash; 474001</p>
+            <p className="mt-2 xl:mt-1">Rishishwar Industry Pvt. Ltd., Mahadaji Nagar, Lashkar,<br />Gird, Gwalior, Madhya Pradesh &ndash; 474001</p>
           </div>
           <div>
             <h3 className="text-xs font-bold text-foreground">Corporate Office</h3>
-            <p className="mt-3">Gincube Center, Motimal,<br />Lashkar, Gird,<br />Gwalior &ndash; 474009</p>
+            <p className="mt-2 xl:mt-1">Gincube Center, Motimal, Lashkar,<br />Gird, Gwalior &ndash; 474009</p>
           </div>
         </div>
       </div>
@@ -123,19 +123,11 @@ export function SiteFooter() {
       <div className="order-8 col-span-3 sm:order-6 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Downloads</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/research" className="font-medium text-foreground">Our Research &amp; Analysis</Link><Link to="/downloads">Business Valuation Reports</Link><Link to="/downloads">Business Reports &amp; Documents</Link><Link to="/downloads">All Reports</Link><p className="text-[10px] leading-relaxed text-muted-foreground/80">Use the report number and publish date to download.</p></div></div>
     </div>
     <div className="border-t border-border px-5 py-[5mm] text-center text-[10px] text-muted-foreground">
-      <div className="mx-auto max-w-[1380px] sm:grid sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-3 sm:text-[7.5px] sm:[&_p]:whitespace-nowrap sm:[&_h3]:text-[7.5px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1fr)] lg:text-[10px] lg:[&_h3]:text-[10px]">
-        <div className="hidden text-left sm:block">
-          <h3 className="text-[10px] font-bold text-foreground">Registered Office</h3>
-          <p className="mt-1">Rishishwar Industry Pvt. Ltd., Mahadaji Nagar, Lashkar,</p><p className="mt-1">Gird, Gwalior, Madhya Pradesh &ndash; 474001</p>
-        </div>
+      <div className="mx-auto max-w-[1380px] sm:text-[7.5px] sm:[&_p]:whitespace-nowrap sm:[&_h3]:text-[7.5px] lg:text-[10px] lg:[&_h3]:text-[10px]">
         <div>
           <p>© {new Date().getFullYear()} RILOYD. All rights reserved by RISHISHWAR INDUSTRY PRIVATE LIMITED.</p>
           <p className="mt-1">Riloyd &mdash; a unit of RISHISHWAR INDUSTRY PRIVATE LIMITED</p>
           <p className="mt-1">CIN Number: U85500MP2023PTC068770</p>
-        </div>
-        <div className="hidden text-right sm:block">
-          <h3 className="text-[10px] font-bold text-foreground">Corporate Office</h3>
-          <p className="mt-1">Gincube Center, Motimal, Lashkar, Gird,</p><p className="mt-1">Gwalior &ndash; 474009</p>
         </div>
       </div>
     </div>
