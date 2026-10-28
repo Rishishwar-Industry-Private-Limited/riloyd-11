@@ -107,7 +107,7 @@ export function SiteFooter() {
           <a className="font-medium text-foreground hover:underline" href="mailto:careers@riloyd.in">careers@riloyd.in</a>
           <a className="font-medium text-foreground hover:underline" href="mailto:idea@riloyd.in">idea@riloyd.in</a>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:hidden xl:mt-5 xl:grid xl:grid-cols-1 xl:gap-y-3 xl:text-[10.5px]">
+        <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:mt-4 xl:mt-5 xl:grid-cols-1 xl:gap-y-3 xl:text-[10.5px]">
           <div>
             <h3 className="text-xs font-bold text-foreground">Registered Office</h3>
             <p className="mt-2 xl:mt-1">Rishishwar Industry Pvt. Ltd., Mahadaji Nagar, Lashkar,<br />Gird, Gwalior, Madhya Pradesh &ndash; 474001</p>
@@ -123,7 +123,7 @@ export function SiteFooter() {
       <div className="order-8 col-span-3 sm:order-6 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Downloads</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/research" className="font-medium text-foreground">Our Research &amp; Analysis</Link><Link to="/downloads">Business Valuation Reports</Link><Link to="/downloads">Business Reports &amp; Documents</Link><Link to="/downloads">All Reports</Link><p className="text-[10px] leading-relaxed text-muted-foreground/80">Use the report number and publish date to download.</p></div></div>
     </div>
     <div className="border-t border-border px-5 py-[5mm] text-center text-[10px] text-muted-foreground">
-      <div className="mx-auto max-w-[1380px] sm:text-[7.5px] sm:[&_p]:whitespace-nowrap sm:[&_h3]:text-[7.5px] lg:text-[10px] lg:[&_h3]:text-[10px]">
+      <div className="mx-auto max-w-[1380px]">
         <div>
           <p>© {new Date().getFullYear()} RILOYD. All rights reserved by RISHISHWAR INDUSTRY PRIVATE LIMITED.</p>
           <p className="mt-1">Riloyd &mdash; a unit of RISHISHWAR INDUSTRY PRIVATE LIMITED</p>
