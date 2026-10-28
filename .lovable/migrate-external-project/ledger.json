@@ -1,0 +1,10 @@
+[
+  {"capability":"code","source":"TanStack Start archive","outcome":"migrate","status":"in_progress","next_action":"copy source"},
+  {"capability":"schema","source":"Lovable Cloud (types.ts + setup contract)","outcome":"migrate","status":"in_progress","next_action":"recreate tables, functions, RLS"},
+  {"capability":"records","source":"previous Cloud database","outcome":"migrate","status":"pending","next_action":"request CSV exports"},
+  {"capability":"auth identities","source":"previous Cloud auth (admin users)","outcome":"migrate","status":"pending","next_action":"request user export; admin re-signup + role grant"},
+  {"capability":"authorization","source":"user_roles/has_role","outcome":"migrate","status":"in_progress","next_action":"recreate"},
+  {"capability":"file bytes","source":"buckets registration-documents, customer-reports","outcome":"migrate","status":"pending","next_action":"buckets recreated; files need re-upload"},
+  {"capability":"AI","source":"Lovable AI Gateway","outcome":"preserve","status":"in_progress","next_action":"verify LOVABLE_API_KEY"},
+  {"capability":"verification","source":"-","outcome":"verify","status":"pending","next_action":"build + route checks"}
+]
