@@ -1,5 +1,8 @@
 # Roadmap
 
+- [x] Restore uploaded funding video with autoplay and no controls
+- [x] Show India registration options: ₹2,999 +18% GST for up to 2 people; ₹1,499 +18% GST for up to 1 person per startup/idea
+
 - [x] Replace low-resolution country hero images with HD artwork
 - [x] Expand country pages using existing verified website content
 - [ ] Clear copied migration files and rescaffold an empty remix migration set: blocked by platform rules prohibiting deletion/reset of migration history

@@ -8,6 +8,13 @@ export const feeSchema = z.object({
   amount: z.number().finite().positive().max(1000000).nullable(),
 }).refine(row => row.currency === countryCurrencies[row.country], "Choose the country's currency.");
 export type ProgrammeFee = z.infer<typeof feeSchema>;
+export const indiaRegistrationOptions = [
+  { amount: 2999, maxPersons: 2, gstPercent: 18 },
+  { amount: 1499, maxPersons: 1, gstPercent: 18 },
+] as const;
+export function indiaRegistrationSummary() {
+  return indiaRegistrationOptions.map(option => `₹${option.amount.toLocaleString("en-IN")}/- +${option.gstPercent}% GST · up to ${option.maxPersons} ${option.maxPersons === 1 ? "person" : "persons"} per startup/idea`).join("; ");
+}
 export const internationalServices = [
   { id: "research", title: "Research & Strategy", copy: "Market evidence, competitor insight and a practical strategy shaped around your local market and connections with India." },
   { id: "funding", title: "Business Fundings & Grants", copy: "Funding-readiness, pitch preparation and relevant grant research. Eligibility, due diligence and funder decisions apply; funding is not guaranteed." },
