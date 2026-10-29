@@ -1,5 +1,11 @@
 # Roadmap
 
+- [x] Add personalized AI prototype preparation advice using the founder's funding goal; verified a complete personalized response
+- [x] Verify existing backend tables, RLS, roles, functions, publishing trigger and private storage; enable email login
+- [ ] Provision requested admin account and verify admin actions: waiting for user to create the account through More → Users → Add user → Create new user
+- [x] Further optimize international photos and save an inspected downloadable archive of all 97 referenced website images
+- [ ] Push repository changes: direct Git push unavailable; user must check/connect Project settings → Git for managed sync
+
 - [x] Reduce initial scripts with route/component splitting and deferred nonessential tools
 - [x] Add an India-focused Prototype Funding presentation in English, retaining the site theme and clear independent-programme status
 

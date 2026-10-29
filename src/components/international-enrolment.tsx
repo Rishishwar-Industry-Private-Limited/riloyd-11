@@ -4,7 +4,7 @@ import { ArrowRight, Globe2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { displayFee, indiaRegistrationSummary, type ProgrammeCountry } from "@/lib/international-programme";
 import { programmeFeesQuery } from "@/lib/programme-fees-query";
-import founders from "@/assets/international-founders.jpg";
+import founders from "@/assets/international-founders.webp";
 import { marketConfigs } from "@/lib/market-config";
 
 export function InternationalEnrolment({ country }: { country: ProgrammeCountry }) {
