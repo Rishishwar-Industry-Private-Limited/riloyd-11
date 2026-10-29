@@ -90,12 +90,7 @@ const services = [
   },
 ];
 
-const stats = [
-  ["₹150Cr+", "Funding Enabled"],
-  ["15+", "Industries Served"],
-  ["75+", "Businesses Advised"],
-  ["200+", "Startup Ideas Analyzed"],
-];
+const stats = siteStats;
 
 const strengths = [
   { icon: Target, title: "Strategic Advisory", copy: "From vision to execution" },
