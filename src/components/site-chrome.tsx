@@ -108,13 +108,13 @@ export function SiteFooter() {
           <div>
             <h3 className="text-xs font-bold text-foreground">Corporate Office</h3>
             <p className="mt-2 xl:mt-1">Gincube Center, Motimal, Lashkar,<br />Gird, Gwalior &ndash; 474009</p>
-          </div>
-        </div>
-        <div className="mt-4 sm:hidden">
-          <h2 className="text-xs font-bold">Follow Us</h2>
-          <div className="mt-3 flex items-center gap-2">
-            <a className="social-link" href="https://www.linkedin.com/company/145354558" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on LinkedIn"><Linkedin className="h-4 w-4" aria-hidden="true" /></a>
-            <a className="social-link" href="https://www.instagram.com/riloyd.in/" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on Instagram"><Instagram className="h-4 w-4" aria-hidden="true" /></a>
+            <div className="mt-3 sm:hidden">
+              <h2 className="text-xs font-bold">Follow Us</h2>
+              <div className="mt-3 flex items-center gap-2">
+                <a className="social-link" href="https://www.linkedin.com/company/145354558" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on LinkedIn"><Linkedin className="h-4 w-4" aria-hidden="true" /></a>
+                <a className="social-link" href="https://www.instagram.com/riloyd.in/" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on Instagram"><Instagram className="h-4 w-4" aria-hidden="true" /></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
