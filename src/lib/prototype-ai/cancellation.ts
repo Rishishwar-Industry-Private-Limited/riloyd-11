@@ -1,5 +1,5 @@
 export function isAssessmentAbort(error: unknown, signal: AbortSignal) {
-  return signal.aborted || (error instanceof Error && error.name === "AbortError");
+  return signal.aborted || (typeof error === "object" && error !== null && "name" in error && error.name === "AbortError");
 }
 
 export function reportAssessmentStreamError(error: unknown, signal: AbortSignal) {
