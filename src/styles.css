@@ -293,3 +293,10 @@
    so the size shrinks just enough as the screen narrows. */
 .copyright-bar { font-size: max(7px, min(9px, 2.1vw)); }
 @media (min-width: 640px) { .copyright-bar { font-size: 10px; } }
+
+/* Phone footer: nudge Our People and About Us left so their long labels fit one line. */
+@media (min-width: 360px) and (max-width: 639px) {
+  .footer-people { margin-left: -8mm; }
+  .footer-about { margin-left: -4mm; }
+  .footer-people a, .footer-about a { white-space: nowrap; }
+}
