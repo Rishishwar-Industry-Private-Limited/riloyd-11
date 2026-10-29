@@ -38,7 +38,7 @@ import gatheringPitch from "@/assets/local/gathering-pitch.webp";
 import gatheringExpo from "@/assets/local/gathering-expo.webp";
 import gatheringBadges from "@/assets/local/gathering-badges.webp";
 import gatheringHall from "@/assets/local/gathering-hall.webp";
-import gatheringVideo from "@/assets/videos/riloyd-gathering.mp4.asset.json";
+import gatheringVideo from "@/assets/videos/funding-gathering-autoplay.mp4.asset.json";
 
 const ZOHOPUBLIC = "https://forms.zohopublic.in/RIPLSTORES/form/StartupIdeaRegistrationForm/formperma/1SNzTjiKwSF14T0BCEyJLvZCZDDowZl3NYWbAjpy1KE";
 
