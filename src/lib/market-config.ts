@@ -15,21 +15,21 @@ import europeLogoDarkTheme from "@/assets/local/regions/riloyd-europe-transparen
 import australiaLogoDarkTheme from "@/assets/local/regions/riloyd-australia-transparent-dark-theme.webp";
 import canadaLogoDarkTheme from "@/assets/local/regions/riloyd-canada-transparent-dark-theme.webp";
 import indiaLogoDarkTheme from "@/assets/local/regions/riloyd-india-transparent-dark-theme.webp";
-import indiaImageAsset from "@/assets/local/global-india.jpg.optimized.webp";
+import indiaImageAsset from "@/assets/countries/india-hd.webp";
 const indiaImage = indiaImageAsset;
-import britainImageAsset from "@/assets/local/global-britain.jpg.optimized.webp";
+import britainImageAsset from "@/assets/countries/uk-hd.webp";
 const britainImage = britainImageAsset;
-import uaeImageAsset from "@/assets/local/global-uae.jpg.optimized.webp";
+import uaeImageAsset from "@/assets/countries/uae-hd.webp";
 const uaeImage = uaeImageAsset;
-import canadaImageAsset from "@/assets/local/global-canada.jpg.optimized.webp";
+import canadaImageAsset from "@/assets/countries/canada-hd.webp";
 const canadaImage = canadaImageAsset;
-import americaImageAsset from "@/assets/local/global-america.jpg.optimized.webp";
+import americaImageAsset from "@/assets/countries/usa-hd.webp";
 const americaImage = americaImageAsset;
-import singaporeImageAsset from "@/assets/local/global-singapore.jpg.optimized.webp";
+import singaporeImageAsset from "@/assets/countries/singapore-hd.webp";
 const singaporeImage = singaporeImageAsset;
-import europeImageAsset from "@/assets/local/global-europe.jpg.optimized.webp";
+import europeImageAsset from "@/assets/countries/europe-hd.webp";
 const europeImage = europeImageAsset;
-import australiaImageAsset from "@/assets/local/global-australia.jpg.optimized.webp";
+import australiaImageAsset from "@/assets/countries/australia-hd.webp";
 const australiaImage = australiaImageAsset;
 
 export type MarketConfig = {
