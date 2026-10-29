@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Optimize whole-site loading without changing design; verify main pages, images and autoplay video
+
 - [x] Redesign Payment page, display all six verified accounts, and add Payment link under footer About Us
 
 - [x] Perform full-site source SEO review, fix stale website identity/canonical tags, add service structured data, and check 22 public URLs
