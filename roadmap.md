@@ -1,5 +1,8 @@
 # Roadmap
 
+- [ ] Add personalized AI prototype preparation advice using the founder's funding goal
+- [ ] Verify and repair website backend readiness; provision requested email/password admin account without storing credentials
+
 - [x] Reduce initial scripts with route/component splitting and deferred nonessential tools
 - [x] Add an India-focused Prototype Funding presentation in English, retaining the site theme and clear independent-programme status
 
