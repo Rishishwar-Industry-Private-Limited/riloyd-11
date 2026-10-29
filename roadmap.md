@@ -1,5 +1,9 @@
 # Roadmap
 
+- [ ] Replace low-resolution country hero images with HD artwork
+- [ ] Expand country pages using existing verified website content
+- [ ] Clear copied migration files and rescaffold an empty remix migration set
+
 - [x] Enhance all country pages and country headers; connect footer logos and Global tabs
 - [x] Restrict overseas services to four and include international startups/ideas
 - [x] Add admin-managed overseas country fees with USA USD 169
