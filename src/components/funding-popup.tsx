@@ -1,33 +1,13 @@
-import { useEffect, useState, type FormEvent } from "react";
-import { useServerFn } from "@tanstack/react-start";
+import { useEffect, useState } from "react";
 import { CheckCircle2, Rocket, X } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import posterAsset from "@/assets/local/funding-programme-poster.webp";
 import winnersImg from "@/assets/popup-event.webp";
-import {
-  fundingApplicationSchema,
-  submitFundingApplication,
-  type FundingApplication,
-} from "@/lib/funding-popup.functions";
-
-const stages = ["Idea", "Prototype / MVP", "Early Revenue", "Growth", "Scaling"];
-const industries = ["Technology", "Healthcare", "Consumer & FMCG", "Education", "Manufacturing", "Financial Services", "Agriculture", "Real Estate", "Professional Services", "Other"];
-
-const empty: FundingApplication = { founderName: "", email: "", mobile: "", startupName: "", stage: "", industry: "", description: "" };
-
-const inputCls =
-  "w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
-
 export function FundingPopup() {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState<FundingApplication>(empty);
-  const [errors, setErrors] = useState<Partial<Record<keyof FundingApplication, string>>>({});
-  const [busy, setBusy] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [code, setCode] = useState<string | null>(null);
-  const [failure, setFailure] = useState<string | null>(null);
-  const submit = useServerFn(submitFundingApplication);
 
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 1200);
@@ -38,36 +18,6 @@ export function FundingPopup() {
     setOpen(open);
     if (!open) setShowForm(false);
   };
-
-  const set = (k: keyof FundingApplication, v: string) => {
-    setForm((f) => ({ ...f, [k]: v }));
-    setErrors((e) => ({ ...e, [k]: undefined }));
-  };
-
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setFailure(null);
-    const parsed = fundingApplicationSchema.safeParse(form);
-    if (!parsed.success) {
-      const next: typeof errors = {};
-      for (const issue of parsed.error.issues) next[issue.path[0] as keyof FundingApplication] ??= issue.message;
-      setErrors(next);
-      return;
-    }
-    setBusy(true);
-    try {
-      const res = await submit({ data: parsed.data });
-      setCode(res.applicationCode);
-      setForm(empty);
-    } catch {
-      setFailure("Something went wrong. Please try again.");
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const err = (k: keyof FundingApplication) =>
-    errors[k] ? <p className="mt-1 text-xs text-destructive">{errors[k]}</p> : null;
 
   return (
     <>
