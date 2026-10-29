@@ -5,9 +5,10 @@ import type { Database } from "@/integrations/supabase/types";
 import { countryLogoSchema, matchesLogoSignature, validateLogoFile, type CountryLogo } from "./country-logo-schemas";
 
 export const getCountryLogos = createServerFn({ method: "GET" }).handler(async (): Promise<CountryLogo[]> => {
+  // Uploaded logos are admin-only now; visitors fall back to bundled artwork, so never fail the page.
   const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
-  if (!url || !key) throw new Error("Country logos are unavailable.");
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["SUPABASE_ANON_KEY"];
+  if (!url || !key) return [];
   const client = createClient<Database>(url, key, { auth: { persistSession: false, autoRefreshToken: false }, global: { fetch: (input, init) => {
     const headers = new Headers(init?.headers);
     if (key.startsWith("sb_")) headers.delete("Authorization");
@@ -15,16 +16,18 @@ export const getCountryLogos = createServerFn({ method: "GET" }).handler(async (
     return fetch(input, { ...init, headers });
   } } });
   const { data, error } = await client.from("country_logos").select("country,theme,file_path");
-  if (error) throw new Error("Country logos could not be loaded.");
-  return Promise.all((data ?? []).map(async row => {
-    const metadata = countryLogoSchema.parse(row);
+  if (error || !data?.length) return [];
+  const results = await Promise.all(data.map(async row => {
+    const parsed = countryLogoSchema.safeParse(row);
+    if (!parsed.success) return null;
     const { data: signed, error: signError } = await client.storage.from("country-logos").createSignedUrl(row.file_path, 3600);
-    if (signError || !signed) throw new Error("Country logo could not be loaded.");
+    if (signError || !signed) return null;
     const browserUrl = new URL(import.meta.env['VITE_SUPABASE_URL']);
     const assetUrl = new URL(signed.signedUrl);
     assetUrl.host = browserUrl.host; assetUrl.protocol = browserUrl.protocol;
-    return { ...metadata, url: assetUrl.toString() };
+    return { ...parsed.data, url: assetUrl.toString() };
   }));
+  return results.filter((r): r is CountryLogo => r !== null);
 });
 
 export const saveCountryLogo = createServerFn({ method: "POST" }).middleware([requireSupabaseAuth])
