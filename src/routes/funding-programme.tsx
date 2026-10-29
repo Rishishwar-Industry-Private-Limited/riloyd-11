@@ -153,10 +153,10 @@ export const Route = createFileRoute("/funding-programme")({
       { property: "og:title", content: "Startup Funding Programme | Riloyd" },
       { property: "og:description", content: "Pitch, connect, raise and grow. Non-refundable grants of up to ₹20 Lakhs for the top five startups, with mentorship and investor connect." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://riloyd-global-atlas.lovable.app/funding-programme" },
+      { property: "og:url", content: "/funding-programme" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://riloyd-global-atlas.lovable.app/funding-programme" }],
+    links: [{ rel: "canonical", href: "/funding-programme" }],
   }),
   component: FundingProgramme,
 });
