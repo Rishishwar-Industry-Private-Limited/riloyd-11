@@ -103,7 +103,11 @@ export function SiteFooter() {
           <div>
             <h3 className="text-xs font-bold text-foreground">Registered Office</h3>
             <p className="mt-2 xl:mt-1">Rishishwar Industry Pvt. Ltd., Mahadaji Nagar, Lashkar,<br />Gird, Gwalior, Madhya Pradesh &ndash; 474001</p>
+            <div className="mt-3 sm:hidden">
+              <Link to="/global-presence" aria-label="Explore Riloyd Global presence" className="block w-fit max-w-full"><img src={theme === "light" ? globalLight : globalGlossy} alt="Riloyd Global — explore our global presence" loading="lazy" className="h-10 w-auto max-w-full object-contain object-left" decoding="async" /></Link>
+            </div>
           </div>
+
           <div>
             <h3 className="text-xs font-bold text-foreground">Corporate Office</h3>
             <p className="mt-2 xl:mt-1">Gincube Center, Motimal, Lashkar,<br />Gird, Gwalior &ndash; 474009</p>
