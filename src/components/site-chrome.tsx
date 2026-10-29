@@ -62,7 +62,6 @@ export function SiteHeader() {
 const aboutLinks = [
   { label: "Our Vision", hash: "vision" },
   { label: "Our Mission", hash: "mission" },
-  { label: "Our Management", hash: "management" },
   { label: "Who We Serve", hash: "who-we-serve" },
   { label: "What We Do", hash: "what-we-do" },
   { label: "How We Think", hash: "how-we-think" },
