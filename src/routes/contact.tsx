@@ -116,7 +116,7 @@ function ContactPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <section className="contact-page-hero relative border-b border-border">
-        <img src={officeAsset} alt="Riloyd reception office" className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+        <img src={officeAsset} alt="Riloyd reception office" className="absolute inset-0 h-full w-full object-cover object-center" fetchPriority="high" decoding="async" />
         <div className="contact-page-hero-shade absolute inset-0" />
         <div className="relative z-10 mx-auto flex min-h-[450px] max-w-[1380px] items-center px-5 pb-12 pt-6 sm:px-6 lg:px-12">
           <div className="max-w-xl">

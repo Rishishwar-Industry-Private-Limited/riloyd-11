@@ -4,6 +4,7 @@ import { ArrowRight, BarChart3, Globe2, Handshake, MapPin, Menu, Network, Packag
 import { Button } from "@/components/ui/button";
 import { internationalServices } from "@/lib/international-programme";
 import { marketConfigs, marketOrder } from "@/lib/market-config";
+import { countryPreviewImages } from "@/lib/country-preview-images";
 import globeImageAsset from "@/assets/local/global-globe.jpg.optimized.webp";
 const globeImage = globeImageAsset;
 import mapImageAsset from "@/assets/local/global-map.jpg.optimized.webp";
@@ -57,7 +58,7 @@ function GlobalPresence() {
       <nav aria-label="Country tabs" className="mt-7 flex flex-wrap gap-2">{markets.map(market => <Button asChild variant="outline" key={market.slug}><Link to="/global-presence/$slug" params={{ slug: market.slug }}>{market.name}</Link></Button>)}</nav>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {markets.map((market) => <article key={market.name} className="overflow-hidden rounded-md border border-border bg-surface text-foreground shadow-sm">
-          <img src={market.image} alt={market.landmark} width={400} height={456} loading="lazy" className="aspect-[1.5] w-full object-cover" decoding="async" />
+          <img src={countryPreviewImages[market.slug] ?? market.image} alt={market.landmark} width={640} height={363} loading="lazy" className="aspect-[1.5] w-full object-cover" decoding="async" />
           <div className="px-4 pb-5 pt-4"><CountryLogo market={market} className="h-12 w-auto max-w-full object-contain object-left" /><h3 className="mt-4 text-base font-extrabold">{market.name}</h3><p className="mt-1 min-h-12 text-xs leading-relaxed text-muted-foreground">{market.description}</p><Link to="/global-presence/$slug" params={{ slug: market.slug }} aria-label={`Explore Riloyd ${market.name}`} className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-primary">Explore market <ArrowRight size={15} /></Link></div>
         </article>)}
       </div>

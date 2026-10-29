@@ -33,7 +33,7 @@ function ServicesIndex() {
     <div className="min-h-screen bg-background text-foreground">
 
       <section className="relative min-h-[380px] overflow-hidden border-b border-border sm:min-h-[430px]">
-        <img src={officeAsset} alt="Riloyd office building at sunset" className="absolute inset-0 h-full w-full object-cover object-[60%_center]" loading="lazy" decoding="async" />
+        <img src={officeAsset} alt="Riloyd office building at sunset" className="absolute inset-0 h-full w-full object-cover object-[60%_center]" fetchPriority="high" decoding="async" />
         <div className="hero-shade absolute inset-0" />
         <div className="relative mx-auto flex min-h-[380px] max-w-[1380px] flex-col justify-center px-5 py-12 sm:min-h-[430px] sm:px-6 lg:px-12">
           <nav aria-label="Breadcrumb" className="mb-9 flex items-center gap-2 text-xs text-soft">
