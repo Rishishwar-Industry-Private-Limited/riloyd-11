@@ -114,7 +114,7 @@ export function SiteFooter() {
       <div className="order-7 col-span-3 sm:order-5 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our Services</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{serviceOrder.map((key) => { const service = serviceConfigs[key]; return service ? <Link key={key} to="/services/$slug" params={{ slug: service.slug }}>{service.shortTitle}</Link> : null; })}</div></div>
       <div className="order-8 col-span-3 sm:order-6 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Downloads</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/research" className="font-medium text-foreground">Our Research &amp; Analysis</Link><Link to="/downloads">Business Valuation Reports</Link><Link to="/downloads">Business Reports &amp; Documents</Link><Link to="/downloads">All Reports</Link></div></div>
     </div>
-    <div className="border-t border-border px-5 py-[5mm] text-center text-[10px] text-muted-foreground">
+    <div className="border-t border-border px-5 py-[5mm] text-center text-[9px] text-muted-foreground sm:text-[10px]">
       <div className="mx-auto max-w-[1380px]">
         <div>
           <p>© {new Date().getFullYear()} RILOYD. All rights reserved by RISHISHWAR INDUSTRY PRIVATE LIMITED.</p>
