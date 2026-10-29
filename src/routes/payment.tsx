@@ -4,7 +4,7 @@ import { Check, Copy, Landmark, ArrowRight, ShieldCheck, Globe2 } from "lucide-r
 import { Button } from "@/components/ui/button";
 import { CountryLogo } from "@/components/country-logo";
 import { accountHolder, paymentAccounts } from "@/lib/payment-accounts";
-import { marketConfigs, marketOrder, type MarketKey } from "@/lib/market-config";
+import { marketConfigs, marketOrder } from "@/lib/market-config";
 
 export const Route = createFileRoute("/payment")({
   validateSearch: (search: Record<string, unknown>) => ({ country: marketOrder.find(key => key === search["country"]) ?? "usa" }),
