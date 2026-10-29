@@ -1,10 +1,12 @@
 # Roadmap
 
-- [ ] Enhance all country pages and country headers; connect footer logos and Global tabs
-- [ ] Restrict overseas services to four and include international startups/ideas
-- [ ] Add admin-managed country fees with USA USD 169; other fees pending user values
-- [ ] Add verified payment account details page
-- [ ] Verify public country/payment flows and admin fee changes where access permits
+- [x] Enhance all country pages and country headers; connect footer logos and Global tabs
+- [x] Restrict overseas services to four and include international startups/ideas
+- [x] Add admin-managed overseas country fees with USA USD 169
+- [x] Add verified payment account details page
+- [x] Verify public country/payment flows, mobile rendering and fee validation tests
+- [ ] Configure other overseas registration fees: waiting on user values, currently unannounced
+- [ ] Verify authenticated admin fee save/readback: blocked because no auth users/admin account exists
 
 - [x] Add admin country/theme logo upload and preview panel
 - [x] Secure saved logos and connect all website logo locations

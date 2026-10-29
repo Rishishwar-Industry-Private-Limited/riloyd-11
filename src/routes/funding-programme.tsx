@@ -103,7 +103,7 @@ const canApply = [
 const faqs = [
   [
     "What is the registration fee?",
-    "For India, the registration fee is ₹2,999 plus 18% GST and includes participation for up to two persons per startup. Beyond the first two persons, each additional participant is ₹2,000 plus 18% GST. International country-specific fees are shown in the international registration section; USA registration is USD 169, subject to admin updates.",
+    "For India, the registration fee is ₹2,999 plus 18% GST and includes participation for up to two persons per startup. Beyond the first two persons, each additional participant is ₹2,000 plus 18% GST. Current international country-specific fees are shown in the international registration section.",
   ],
   [
     "Who can participate?",
