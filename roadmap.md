@@ -6,5 +6,5 @@
 - [x] Replace Europe logos (light + dark themes) with newly uploaded files
 - [x] Replace UAE logos (light + dark themes) with newly uploaded files
 - [x] Replace Britain light-theme logo with newly uploaded file
-- [ ] Britain dark-theme logo: waiting on user upload (previous dark upload was blank)
-- [ ] Verify Europe + UAE + Britain logos in both themes in browser
+- [x] Verify Europe + UAE + Britain logos in both themes in browser
+- [ ] Britain dark-theme logo: waiting on user upload (only the light variant arrived; earlier dark upload was blank)
