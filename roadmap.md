@@ -1,6 +1,7 @@
 # Roadmap
 
 - [ ] Optimize whole-site loading without changing design; verify main pages, images and autoplay video
+- [ ] Check remixed project migration history and retain an empty scaffold for the new database
 
 - [x] Redesign Payment page, display all six verified accounts, and add Payment link under footer About Us
 
