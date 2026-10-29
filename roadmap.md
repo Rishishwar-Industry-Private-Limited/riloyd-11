@@ -16,3 +16,5 @@
 - [x] Footer copyright: fit the three legal lines on one row each on phones
 - [x] Mobile footer: Our Services left, Downloads right
 - [x] Mobile footer: Follow Us moved into Contact below the office addresses
+- [x] Mobile footer: About Us 4mm left, Our People 8mm left so labels fit one line
+- [ ] Mobile footer: Follow Us directly under the Corporate Office address (right side)
