@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Perform full-site deep SEO review and address verified issues; ranking is not guaranteed
+
 - [ ] Add AI prototype eligibility advisory and downloadable applicant checklist
 - [ ] Restore Prototype Funding to the shared website theme and keep the entire page English-only
 
