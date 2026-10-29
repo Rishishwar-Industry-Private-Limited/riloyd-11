@@ -53,6 +53,27 @@ export type Database = {
         }
         Relationships: []
       }
+      country_logos: {
+        Row: {
+          country: string
+          file_path: string
+          theme: string
+          updated_at: string
+        }
+        Insert: {
+          country: string
+          file_path: string
+          theme: string
+          updated_at?: string
+        }
+        Update: {
+          country?: string
+          file_path?: string
+          theme?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       customer_reports: {
         Row: {
           active: boolean
