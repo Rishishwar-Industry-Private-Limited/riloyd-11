@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
+import { DeferredContent } from "@/components/deferred-content";
 import {
   ArrowRight,
   BarChart3,
@@ -24,8 +26,8 @@ import {
 import heroAsset from "@/assets/local/riloyd-mountain.png.optimized.webp";
 import officeAsset from "@/assets/local/riloyd-office.png.optimized.webp";
 import contactOfficeAsset from "@/assets/local/riloyd-contact-office.png.optimized.webp";
-import { ServiceAdvisor } from "@/components/service-advisor";
-import { FundingPopup } from "@/components/funding-popup";
+const ServiceAdvisor = lazy(() => import("@/components/service-advisor").then(module => ({ default: module.ServiceAdvisor })));
+const FundingPopup = lazy(() => import("@/components/funding-popup").then(module => ({ default: module.FundingPopup })));
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -185,7 +187,7 @@ function Index() {
         </div>
       </section>
 
-      <ServiceAdvisor />
+      <DeferredContent className="min-h-[540px]" fallback={<section className="min-h-[540px] border-b border-border bg-background" aria-busy="true" />}><Suspense fallback={<section className="min-h-[540px] border-b border-border bg-background" aria-busy="true" />}><ServiceAdvisor /></Suspense></DeferredContent>
 
       <section id="contact" className="contact-band relative min-h-[8cm] overflow-hidden border-b border-border sm:h-[8cm]">
         <img src={contactOfficeAsset} alt="Riloyd reception office overlooking a city at sunset" className="contact-background absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async" />
@@ -205,7 +207,7 @@ function Index() {
       </section>
 
 
-      <FundingPopup />
+      <DeferredContent mode="idle"><Suspense fallback={null}><FundingPopup /></Suspense></DeferredContent>
     </main>
   );
 }
