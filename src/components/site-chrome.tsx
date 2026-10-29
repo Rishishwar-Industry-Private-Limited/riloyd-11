@@ -90,6 +90,9 @@ export function SiteFooter() {
       <div className="footer-people order-3 col-span-2 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our People</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/investors">Our Investors</Link><Link to="/mentors">Our Mentors</Link><Link to="/team">Our Team Members</Link><Link to="/startups">Our Startups</Link><Link to="/businesses">Our Businesses</Link></div></div>
       <div className="footer-about order-4 col-span-2 sm:col-span-2 sm:row-span-1 xl:col-span-1"><h2 className="text-xs font-bold">About Us</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{aboutLinks.map((l) => <Link key={l.hash} to="/about" hash={l.hash}>{l.label}</Link>)}</div></div>
       <div className="order-10 col-span-6 mt-0 sm:order-10 sm:col-span-6 sm:mt-5 xl:col-start-1 xl:col-span-8 xl:row-start-2 xl:mt-1">
+        <div className="hidden border-b border-border pb-4 xl:flex xl:justify-center">
+          <Link to="/global-presence" aria-label="Explore Riloyd Global presence" className="block w-fit max-w-full"><img src={theme === "light" ? globalLight : globalGlossy} alt="Riloyd Global — explore our global presence" loading="lazy" className="h-12 w-auto max-w-full object-contain" decoding="async" /></Link>
+        </div>
         <div className="mt-1 grid grid-cols-4 items-center gap-x-3 gap-y-3 sm:mt-3 xl:grid-cols-8">
           {marketOrder.map((key) => { const market = marketConfigs[key]; return <Link key={key} to="/global-presence/$slug" params={{ slug: market.slug }} aria-label={`Explore Riloyd ${market.name}`} className="flex items-center justify-start"><CountryLogo market={market} className="h-9 w-auto max-w-full object-contain object-left" /></Link>; })}
         </div>
@@ -107,7 +110,7 @@ export function SiteFooter() {
           <div>
             <h3 className="text-xs font-bold text-foreground">Registered Office</h3>
             <p className="mt-2 xl:mt-1">Rishishwar Industry Pvt. Ltd., Mahadaji Nagar, Lashkar,<br />Gird, Gwalior M.P. - 474001</p>
-            <div className="mt-3">
+            <div className="mt-3 xl:hidden">
 
               <Link to="/global-presence" aria-label="Explore Riloyd Global presence" className="block w-fit max-w-full"><img src={theme === "light" ? globalLight : globalGlossy} alt="Riloyd Global — explore our global presence" loading="lazy" className="h-10 w-auto max-w-full object-contain object-left" decoding="async" /></Link>
             </div>
