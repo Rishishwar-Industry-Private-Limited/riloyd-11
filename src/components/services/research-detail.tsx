@@ -9,7 +9,7 @@ import overviewAsset from "@/assets/local/research-overview.png.optimized.webp";
 
 const stats = [
   [Search, "500+", "Research Projects Completed"],
-  [Users, "25+", "Industries Covered"],
+  [Users, "15+", "Industries Served"],
   [Heart, "95%", "Client Satisfaction"],
   [Settings, "Strategic", "Insights for Real Growth"],
 ] as const;
