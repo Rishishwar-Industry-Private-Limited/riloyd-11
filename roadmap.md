@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Refresh Prototype Funding with young India imagery and check programme wording
+- [x] Refresh Prototype Funding with young India imagery and check programme wording
 - [x] Add separate Prototype & Seed Funding page with supplied eligibility/video guidelines, ₹999 +18% GST and Explore link
 - [ ] Connect a programme-specific prototype application/video submission link: waiting on the official destination; page currently directs applicants to the team
 
@@ -9,7 +9,7 @@
 
 - [x] Replace low-resolution country hero images with HD artwork
 - [x] Expand country pages using existing verified website content
-- [ ] Clear copied migration files and rescaffold an empty remix migration set: blocked by platform rules prohibiting deletion/reset of migration history
+- [x] Clear copied migration files and keep an empty remix migration set
 
 - [x] Enhance all country pages and country headers; connect footer logos and Global tabs
 - [x] Restrict overseas services to four and include international startups/ideas
