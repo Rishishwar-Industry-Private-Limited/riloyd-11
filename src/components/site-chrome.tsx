@@ -9,11 +9,13 @@ const darkLogo = darkLogoAsset;
 import globalGlossy from "@/assets/local/riloyd-global-glossy.png.webp";
 import globalLight from "@/assets/local/riloyd-global-light.png.webp";
 import { serviceOrder, serviceConfigs } from "@/lib/service-config";
-import { marketOrder, marketConfigs } from "@/lib/market-config";
+import { marketOrder, marketConfigs, findMarket } from "@/lib/market-config";
+import { internationalServices } from "@/lib/international-programme";
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isGlobalPage = pathname.startsWith("/global-presence");
+  const activeMarket = isGlobalPage ? findMarket(pathname.split("/")[2] ?? "") : undefined;
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -42,7 +44,7 @@ export function SiteHeader() {
 
   return <header className="relative z-30 border-b border-border bg-background text-foreground">
     <div className="mx-auto grid h-[70px] max-w-[1380px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:px-12">
-      <Link to="/" aria-label={isGlobalPage ? "Riloyd Global home" : "Riloyd home"} className="block h-[59px] w-[188px] shrink-0 sm:w-[208px]"><img src={isGlobalPage ? (theme === "light" ? globalLight : globalGlossy) : (theme === "light" ? darkLogo : logoAsset)} alt={isGlobalPage ? "Riloyd Global" : "Riloyd"} className="h-full w-full object-contain object-left" decoding="async" /></Link>
+      <Link to="/" aria-label={activeMarket ? `Riloyd ${activeMarket.name} home` : isGlobalPage ? "Riloyd Global home" : "Riloyd home"} className="block h-[59px] w-[188px] shrink-0 sm:w-[208px]">{activeMarket ? <CountryLogo market={activeMarket} className="h-full w-full object-contain object-left" /> : <img src={isGlobalPage ? (theme === "light" ? globalLight : globalGlossy) : (theme === "light" ? darkLogo : logoAsset)} alt={isGlobalPage ? "Riloyd Global" : "Riloyd"} className="h-full w-full object-contain object-left" decoding="async" />}</Link>
       <nav aria-label="Main navigation" className="hidden items-center justify-center gap-6 text-xs font-bold xl:gap-9 lg:flex">
         {navItems.map((item) => <Link key={item.label} to={item.to} className={`nav-link ${pathname === item.to ? "nav-active" : ""}`}>{item.label}</Link>)}
       </nav>
@@ -69,6 +71,9 @@ const aboutLinks = [
 ];
 
 export function SiteFooter() {
+  const pathname = useRouterState({ select: s => s.location.pathname });
+  const footerMarket = pathname.startsWith("/global-presence/") ? findMarket(pathname.split("/")[2] ?? "") : undefined;
+  const overseas = footerMarket && footerMarket.slug !== "india";
   const [theme, setTheme] = useState("dark");
   useEffect(() => {
     const observer = new MutationObserver(() => setTheme(document.documentElement.classList.contains("light") ? "light" : "dark"));
@@ -122,7 +127,7 @@ export function SiteFooter() {
         </div>
       </div>
       </div>
-      <div className="order-7 col-span-3 sm:order-5 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our Services</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{serviceOrder.map((key) => { const service = serviceConfigs[key]; return service ? <Link key={key} to="/services/$slug" params={{ slug: service.slug }}>{service.shortTitle}</Link> : null; })}</div></div>
+      <div className="order-7 col-span-3 sm:order-5 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our Services</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{overseas ? internationalServices.map(service => <Link key={service.id} to="/global-presence/$slug" params={{ slug: footerMarket.slug }} hash={service.id}>{service.title}</Link>) : serviceOrder.map((key) => { const service = serviceConfigs[key]; return service ? <Link key={key} to="/services/$slug" params={{ slug: service.slug }}>{service.shortTitle}</Link> : null; })}</div></div>
       <div className="order-8 col-span-3 sm:order-6 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Downloads</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground"><Link to="/research" className="font-medium text-foreground">Our Research &amp; Analysis</Link><Link to="/downloads">Business Valuation Reports</Link><Link to="/downloads">Business Reports &amp; Documents</Link><Link to="/downloads">All Reports</Link></div></div>
     </div>
     <div className="copyright-bar border-t border-border px-3 py-[5mm] text-center text-muted-foreground sm:px-5">

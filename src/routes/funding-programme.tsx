@@ -1,4 +1,9 @@
 import type * as React from "react";
+import { useState } from "react";
+import { InternationalEnrolment } from "@/components/international-enrolment";
+import { programmeFeesQuery } from "@/lib/programme-fees-query";
+import { marketConfigs, marketOrder } from "@/lib/market-config";
+import type { ProgrammeCountry } from "@/lib/international-programme";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -102,7 +107,7 @@ const faqs = [
   ],
   [
     "Who can participate?",
-    "Early-stage startups, student-led startups, founders with innovative business ideas, product or service based businesses, growth-stage businesses and funding-ready startups can apply.",
+    "Indian and international early-stage startups, student-led startups, founders with innovative business ideas, product or service based businesses, growth-stage businesses and funding-ready startups can apply.",
   ],
   [
     "Is there support for early ideas?",
@@ -139,6 +144,7 @@ const faqs = [
 ];
 
 export const Route = createFileRoute("/funding-programme")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(programmeFeesQuery),
   head: () => ({
     meta: [
       { title: "Startup Funding Programme | Riloyd" },
