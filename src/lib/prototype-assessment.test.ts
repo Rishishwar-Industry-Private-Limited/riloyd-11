@@ -1,8 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { consumeAssessmentLines, prototypeAssessmentSchema } from "./prototype-assessment";
 
-const valid = { idea: "An affordable sensor for small farms to measure soil moisture.", prototype: "Build and test five sensor kits over eight weeks with an INR 40000 budget.", context: "India-based adult founder owning the design and available to pitch.", consent: true };
+const valid = { idea: "An affordable sensor for small farms to measure soil moisture.", prototype: "Build and test five sensor kits over eight weeks with an INR 40000 budget.", context: "India-based adult founder owning the design and available to pitch.", fundingGoal: "INR 40000 for five sensor kits and a farmer pilot within eight weeks.", consent: true };
 describe("Prototype assessment safeguards", () => {
+  it("requires a funding goal for personalized preparation advice", () => {
+    expect(prototypeAssessmentSchema.safeParse(valid).success).toBe(true);
+    expect(prototypeAssessmentSchema.safeParse({ ...valid, fundingGoal: "" }).success).toBe(false);
+    const { fundingGoal: _goal, ...withoutGoal } = valid;
+    expect(prototypeAssessmentSchema.safeParse(withoutGoal).success).toBe(false);
+  });
   it("requires explicit AI consent", () => {
     expect(prototypeAssessmentSchema.safeParse(valid).success).toBe(true);
     expect(prototypeAssessmentSchema.safeParse({ ...valid, consent: false }).success).toBe(false);

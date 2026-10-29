@@ -5,6 +5,7 @@ export const prototypeAssessmentSchema = z.object({
   idea: z.string().trim().min(40, "Describe your idea in at least 40 characters.").max(4000),
   prototype: z.string().trim().min(30, "Describe your prototype or next milestone in at least 30 characters.").max(4000),
   context: z.string().trim().min(15, "Add your India connection, age eligibility and ownership details.").max(2000),
+  fundingGoal: z.string().trim().min(20, "Describe the funding amount, purpose and milestone in at least 20 characters.").max(2000),
   consent: z.literal(true),
 }).strict();
 
@@ -17,7 +18,8 @@ Prototype support: INR ${prototypeProgramme.supportRange.min}–${prototypeProgr
 Video: up to ${prototypeProgramme.videoMaxSeconds} seconds; MP4 preferred, vertical 9:16 recommended, clear voice, steady frame, simple background, original content, no private customer information or trade secrets, no separate promotional Riloyd reel required.
 ${ideaVideoTimeline.map(row => row.join(": ")).join("\n")}
 Next steps: prepare video, prototype milestone/timeline/itemised budget and honest validation; contact the Riloyd team via the page's Contact the team link for the unconfirmed programme-specific application channel and payment instructions. Only shortlisted founders pitch up to ${prototypeProgramme.pitchMaxMinutes} minutes. This advisory does not submit an application.
-Return concise plain text, no markdown tables, under about 650 words with these headings: Preliminary fit (Potential fit / Needs clarification / Does not currently match); Criterion-by-criterion review (all six, distinguishing evidence and gaps); Prototype and seed readiness; Missing details; Next steps. End by stating this is AI guidance, not a selection decision, and the Riloyd team makes the final decision.`;
+Personalise the advice to the founder's stated funding goal: separate the requested amount from this programme's indicative support range, identify what the money should validate, flag unsupported costs or unrealistic assumptions, and suggest an itemised budget, milestones, evidence and pitch preparation. Do not manufacture market figures or imply that a request above the prototype range is approved seed funding. Give a practical ordered preparation plan specific to the described prototype, with immediate next actions and what evidence each action should produce.
+Return concise plain text, no markdown tables, under about 650 words with these headings: Preliminary fit (Potential fit / Needs clarification / Does not currently match); Criterion-by-criterion review (all six, distinguishing evidence and gaps); Prototype and seed readiness; Funding goal & budget preparation; Personalised preparation plan; Missing details; Next steps. End by stating this is AI guidance, not a selection decision, and the Riloyd team makes the final decision.`;
 }
 
 export async function consumeAssessmentLines(reader: ReadableStreamDefaultReader<Uint8Array>, onEvent: (event: { type: string; text?: string; message?: string }) => void) {
