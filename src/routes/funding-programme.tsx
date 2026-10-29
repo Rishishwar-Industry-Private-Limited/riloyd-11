@@ -3,7 +3,7 @@ import { useState } from "react";
 import { InternationalEnrolment } from "@/components/international-enrolment";
 import { programmeFeesQuery } from "@/lib/programme-fees-query";
 import { marketConfigs, marketOrder } from "@/lib/market-config";
-import type { ProgrammeCountry } from "@/lib/international-programme";
+import { indiaRegistrationOptions, indiaRegistrationSummary, type ProgrammeCountry } from "@/lib/international-programme";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -39,6 +39,7 @@ import gatheringExpo from "@/assets/local/gathering-expo.webp";
 import gatheringBadges from "@/assets/local/gathering-badges.webp";
 import gatheringHall from "@/assets/local/gathering-hall.webp";
 import gatheringVideo from "@/assets/videos/funding-gathering-autoplay.mp4.asset.json";
+import gatheringVideoWebm from "@/assets/videos/funding-gathering-autoplay.webm.asset.json";
 
 const ZOHOPUBLIC = "https://forms.zohopublic.in/RIPLSTORES/form/StartupIdeaRegistrationForm/formperma/1SNzTjiKwSF14T0BCEyJLvZCZDDowZl3NYWbAjpy1KE";
 
@@ -103,7 +104,7 @@ const canApply = [
 const faqs = [
   [
     "What is the registration fee?",
-    "For India, the registration fee is ₹2,999 plus 18% GST and includes participation for up to two persons per startup. Beyond the first two persons, each additional participant is ₹2,000 plus 18% GST. Current international country-specific fees are shown in the international registration section.",
+    `For India: ${indiaRegistrationSummary()}. Beyond the first two persons, each additional participant is ₹2,000 plus 18% GST. Current international country-specific fees are shown in the international registration section.`,
   ],
   [
     "Who can participate?",
@@ -309,7 +310,7 @@ function FundingProgramme() {
           <div className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface">
             <p className="border-b border-border bg-primary px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground">Registration Fee</p>
             <div className="flex flex-1 flex-col gap-3 p-4">
-              <div className="flex items-center gap-4 rounded-md bg-primary/15 px-4 py-4"><UsersRound className="shrink-0 text-primary" size={26} /><div><p className="text-3xl font-black">₹2,999/-</p><p className="text-xs text-muted-foreground">+18% GST · up to 2 persons per startup</p></div></div>
+              {indiaRegistrationOptions.map(option => <div key={option.maxPersons} className="flex items-center gap-4 rounded-md bg-primary/15 px-4 py-4"><UsersRound className="shrink-0 text-primary" size={26} /><div><p className="text-3xl font-black">₹{option.amount.toLocaleString("en-IN")}/-</p><p className="text-xs text-muted-foreground">+{option.gstPercent}% GST · up to {option.maxPersons} {option.maxPersons === 1 ? "person" : "persons"} per startup/idea</p></div></div>)}
               <div className="flex items-center gap-4 rounded-md border border-border px-4 py-4"><UsersRound className="shrink-0 text-primary" size={26} /><div><p className="text-xs font-bold">Additional Participant</p><p className="text-2xl font-black">₹2,000/-</p><p className="text-xs text-muted-foreground">+18% GST per person, beyond the first 2</p></div></div>
               <div className="mt-auto rounded-md border border-primary/40 bg-primary/10 px-4 py-3 text-xs"><b>50% refund</b> if not selected in screening. T&amp;C applicable.</div>
             </div>
@@ -365,7 +366,7 @@ function FundingProgramme() {
           </div>
           <div className="grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:auto-rows-[180px] md:grid-cols-4">
             <div className="relative col-span-2 row-span-2 overflow-hidden rounded-lg border border-border bg-background">
-              <video src={gatheringVideo.url} autoPlay muted loop playsInline preload="metadata" poster={gatheringStage} className="h-full w-full object-cover" aria-label="Highlights from the previous Riloyd startup gathering" />
+              <video autoPlay muted loop playsInline preload="metadata" poster={gatheringStage} className="h-full w-full object-cover" aria-label="Highlights from the previous Riloyd startup gathering"><source src={gatheringVideo.url} type="video/mp4" /><source src={gatheringVideoWebm.url} type="video/webm" /></video>
               <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">● Event highlights</span>
             </div>
             {[[gatheringPitch,"Founders pitching on the Riloyd stage"],[gatheringExpo,"Networking across the expo floor"],[gatheringRegistration,"Registration desk"],[gatheringBadges,"Startup, investor & mentor passes"],[gatheringHall,"The main summit hall"],[gatheringKit,"Participant welcome kit"]].map(([src,label], i) => (
