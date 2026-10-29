@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { ArrowRight, Check, Download, FlaskConical, Lightbulb, Mail, ShieldCheck, Sprout, Video, GraduationCap, Rocket, MapPin } from "lucide-react";
-import { PrototypeAssessment } from "@/components/prototype-assessment";
+import { DeferredContent } from "@/components/deferred-content";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ideaVideoTimeline, prototypeEligibility, prototypePitchTimeline, prototypeProgramme, prototypeRegistrationTotal, prototypeScorecard } from "@/lib/prototype-programme";
@@ -9,6 +9,9 @@ import prototypeImage from "@/assets/prototype-young-india-hero.webp";
 import campusImage from "@/assets/prototype-campus-founders.webp";
 import videoImage from "@/assets/prototype-founder-video.webp";
 import pitchImage from "@/assets/local/gathering-pitch.webp";
+import indiaInnovation from "@/assets/prototype-india-innovation.webp";
+
+const PrototypeAssessment = lazy(() => import("@/components/prototype-assessment").then(module => ({ default: module.PrototypeAssessment })));
 
 const title = "Prototype & Seed Funding Programme | Riloyd";
 const description = "Bring young India's ideas to life with Riloyd's Prototype & Seed Funding Programme. Simple eligibility, a 60-second idea video and ₹999 plus 18% GST registration.";
@@ -40,7 +43,7 @@ function PrototypeFundingPage() {
       <div className="relative z-10 mx-auto max-w-[1380px] px-5 py-14 sm:px-6 lg:px-12 lg:py-20">
         <p className="flex items-center gap-2 text-xs font-bold uppercase text-primary"><Rocket size={16} />Riloyd · Young India. Bold ideas.</p>
         <h1 className="headline mt-4 max-w-2xl text-4xl font-black uppercase leading-tight sm:text-5xl lg:text-6xl">Prototype &amp;<br />Seed Funding</h1>
-        <p className="mt-5 max-w-xl text-xl font-bold text-foreground">Fresh thinking. Your own beginning.</p>
+        <p className="mt-5 max-w-xl text-xl font-bold text-foreground">Built in India. Ready for tomorrow.</p>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-soft sm:text-base">From a campus idea to your first working prototype. Bring your curiosity, identify a real problem, and pitch what you want to build. Your startup journey can begin before you have a company.</p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button asChild size="lg"><a href="#registration">Registration &amp; next steps <ArrowRight /></a></Button>
@@ -56,6 +59,13 @@ function PrototypeFundingPage() {
         {[["₹999 + GST", "Registration"], [`${prototypeProgramme.videoMaxSeconds} seconds`, "Idea video"], [`${prototypeProgramme.pitchMaxMinutes} minutes`, "Shortlisted pitch"], ["Idea → Prototype", "Programme focus"]].map(([value, label]) => <div key={label}><p className="text-xl font-black sm:text-2xl">{value}</p><p className="mt-1 text-xs">{label}</p></div>)}
       </div>
     </section>
+
+    <ProgrammeSection id="built-for-india" kicker="India's startup spirit" title="Ideas from India. Possibilities for the world.">
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <figure><img src={indiaInnovation} width={1536} height={1024} loading="lazy" decoding="async" alt="Young Indian founders building a water-filtration prototype beside the Indian tricolour in a campus workshop" className="aspect-[3/2] w-full rounded-md object-cover" /><figcaption className="mt-3 text-xs font-semibold text-muted-foreground">Designed here. Built here. Tested with real people.</figcaption></figure>
+        <div><p className="text-xs font-bold uppercase text-primary">Dedicated to India's next generation</p><h3 className="mt-4 text-2xl font-black sm:text-3xl">A stronger India begins with people who build.</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">From college workshops to small-town communities, Indian founders can turn everyday challenges into useful innovations. Start with a local problem, build a practical prototype, and show how your idea could improve lives.</p><div className="mt-6 grid gap-4 border-y border-border py-5 sm:grid-cols-3">{[["Local insight", "Solutions shaped around Indian communities."], ["Practical innovation", "Affordable, useful ideas tested in the real world."], ["Founder ambition", "A first step from an idea to a working prototype."]].map(([heading, copy]) => <div key={heading}><h4 className="text-sm font-bold">{heading}</h4><p className="mt-2 text-xs leading-relaxed text-muted-foreground">{copy}</p></div>)}</div><p className="mt-5 text-sm leading-relaxed text-muted-foreground">Inspired by the entrepreneurial spirit of the Startup India ecosystem. Riloyd runs this programme independently; it is not a Government of India or Startup India funding scheme.</p><Button asChild variant="outline" className="mt-5"><a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer">Explore official Startup India resources <ArrowRight /></a></Button></div>
+      </div>
+    </ProgrammeSection>
 
     <ProgrammeSection kicker="The next generation of Indian founders" title="Young India doesn't just dream. It builds.">
       <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
@@ -86,7 +96,7 @@ function PrototypeFundingPage() {
     </ProgrammeSection>
 
     <ProgrammeSection id="idea-assessment" kicker="AI-powered eligibility review" title="Where does your idea fit?" surface>
-      <PrototypeAssessment />
+      <DeferredContent className="min-h-[650px]" fallback={<div className="min-h-[650px]" aria-busy="true" />}><Suspense fallback={<div className="min-h-[650px]" aria-busy="true" />}><PrototypeAssessment /></Suspense></DeferredContent>
     </ProgrammeSection>
 
     <ProgrammeSection kicker="Application journey" title="From a short idea video to a focused pitch.">

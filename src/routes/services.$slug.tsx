@@ -1,13 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { serviceConfigs, serviceOrder } from "@/lib/service-config";
 import type { ServiceConfig } from "@/lib/service-config";
-import { ResearchDetail } from "@/components/services/research-detail";
-import { FundingDetail } from "@/components/services/funding-detail";
-import { ManpowerDetail } from "@/components/services/manpower-detail";
-import { TransformationDetail } from "@/components/services/transformation-detail";
-import { GrowthDetail } from "@/components/services/growth-detail";
-import { IncubationDetail } from "@/components/services/incubation-detail";
+const ResearchDetail = lazy(() => import("@/components/services/research-detail").then(module => ({ default: module.ResearchDetail })));
+const FundingDetail = lazy(() => import("@/components/services/funding-detail").then(module => ({ default: module.FundingDetail })));
+const ManpowerDetail = lazy(() => import("@/components/services/manpower-detail").then(module => ({ default: module.ManpowerDetail })));
+const TransformationDetail = lazy(() => import("@/components/services/transformation-detail").then(module => ({ default: module.TransformationDetail })));
+const GrowthDetail = lazy(() => import("@/components/services/growth-detail").then(module => ({ default: module.GrowthDetail })));
+const IncubationDetail = lazy(() => import("@/components/services/incubation-detail").then(module => ({ default: module.IncubationDetail })));
 
 function findService(slug: string): ServiceConfig | undefined {
   return serviceOrder.map((key) => serviceConfigs[key]).find((service) => service?.slug === slug);
@@ -49,7 +50,7 @@ function ServiceDetail() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-
+      <Suspense fallback={<section className="flex min-h-[570px] items-center border-b border-border px-5"><h1 className="mx-auto w-full max-w-[1280px] text-4xl font-black">{service.title}</h1></section>}>
       {service.slug === "business-research-analysis-strategy" ? <ResearchDetail /> : service.slug === "business-funding" ? <FundingDetail /> : service.slug === "manpower-service" ? <ManpowerDetail /> : service.slug === "business-transformation" ? <TransformationDetail /> : service.slug === "sales-revenue-growth" ? <GrowthDetail /> : service.slug === "startup-business-incubation-centers" ? <IncubationDetail /> : <>
       <section className="relative border-b border-border">
         {service.image ? (
@@ -116,6 +117,7 @@ function ServiceDetail() {
         </div>
       </section>
       </>}
+      </Suspense>
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1380px] px-5 py-16 sm:px-6 lg:px-12">
