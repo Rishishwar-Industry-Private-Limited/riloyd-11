@@ -63,7 +63,7 @@ function PrototypeFundingPage() {
             [GraduationCap, "Campus curiosity", "Students and young makers can turn learning into a practical idea, subject to the programme's eligibility criteria."],
             [MapPin, "Local problems. Fresh solutions.", "Start with the people around you. Explain who needs your solution and how a prototype could help."],
             [Rocket, "First-time founder energy", "You do not need a registered company to begin. Bring an original idea, a clear plan, and honest progress."],
-          ].map(([Icon, heading, copy]) => typeof Icon !== "string" && <div key={String(heading)} className="flex gap-4 border-b border-border pb-4"><Icon className="mt-1 shrink-0 text-prototype-green" size={22} /><div><h3 className="text-sm font-bold">{String(heading)}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{String(copy)}</p></div></div>)}</div>
+          ].map(([Icon, heading, copy]) => Icon && typeof Icon !== "string" && <div key={String(heading)} className="flex gap-4 border-b border-border pb-4"><Icon className="mt-1 shrink-0 text-prototype-green" size={22} /><div><h3 className="text-sm font-bold">{String(heading)}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{String(copy)}</p></div></div>)}</div>
           <p className="mt-5 text-xs leading-relaxed text-muted-foreground">A Riloyd initiative for India's startup spirit. No official affiliation with the Government of India's Startup India initiative is claimed.</p>
         </div>
       </div>
