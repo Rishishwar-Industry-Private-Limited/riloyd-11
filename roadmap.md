@@ -1,8 +1,9 @@
 # Roadmap
 
-- [ ] Add admin country/theme logo upload and preview panel
-- [ ] Secure saved logos and connect all website logo locations
-- [ ] Verify upload, saved readback and permissions
+- [x] Add admin country/theme logo upload and preview panel
+- [x] Secure saved logos and connect all website logo locations
+- [x] Verify theme selection, public rendering, image validation and database permissions
+- [ ] Verify authenticated upload and saved readback: blocked until the user creates an account and receives admin access (this database has no auth users)
 
 - [x] Update 6 country logos (Australia, Britain, UAE, Europe, Singapore, Canada) to new light-theme versions
 - [x] Verify light-theme logos in browser
