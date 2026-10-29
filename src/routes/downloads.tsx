@@ -29,7 +29,7 @@ export const Route = createFileRoute("/downloads")({
     { property: "og:title", content: "Downloads | Riloyd Business Reports & Research" },
     { property: "og:description", content: "Access your Riloyd reports and documents with matching report details." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
-  ] }), component: DownloadsPage,
+  ], links: [{ rel: "canonical", href: "/downloads" }] }), component: DownloadsPage,
 });
 
 function DownloadsPage() {

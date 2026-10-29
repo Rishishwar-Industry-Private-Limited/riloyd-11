@@ -263,6 +263,27 @@ export type Database = {
         }
         Relationships: []
       }
+      prototype_ai_access_state: {
+        Row: {
+          blocked_at: string
+          message: string
+          model_id: string
+          status_code: number
+        }
+        Insert: {
+          blocked_at?: string
+          message: string
+          model_id: string
+          status_code: number
+        }
+        Update: {
+          blocked_at?: string
+          message?: string
+          model_id?: string
+          status_code?: number
+        }
+        Relationships: []
+      }
       registration_applications: {
         Row: {
           admin_notes: string

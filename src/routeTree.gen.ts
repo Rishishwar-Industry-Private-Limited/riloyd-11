@@ -37,6 +37,7 @@ import { Route as StartupsIndexRouteImport } from './routes/startups.index'
 import { Route as StartupsSlugRouteImport } from './routes/startups.$slug'
 import { Route as TeamIndexRouteImport } from './routes/team.index'
 import { Route as TeamSlugRouteImport } from './routes/team.$slug'
+import { Route as ApiPublicPrototypeAssessmentRouteImport } from './routes/api/public/prototype-assessment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -178,6 +179,12 @@ const TeamSlugRoute = TeamSlugRouteImport.update({
   path: '/team/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicPrototypeAssessmentRoute =
+  ApiPublicPrototypeAssessmentRouteImport.update({
+    id: '/api/public/prototype-assessment',
+    path: '/api/public/prototype-assessment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -208,6 +215,7 @@ export interface FileRoutesByFullPath {
   '/services/': typeof ServicesIndexRoute
   '/startups/': typeof StartupsIndexRoute
   '/team/': typeof TeamIndexRoute
+  '/api/public/prototype-assessment': typeof ApiPublicPrototypeAssessmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -238,6 +246,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesIndexRoute
   '/startups': typeof StartupsIndexRoute
   '/team': typeof TeamIndexRoute
+  '/api/public/prototype-assessment': typeof ApiPublicPrototypeAssessmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -269,6 +278,7 @@ export interface FileRoutesById {
   '/services/': typeof ServicesIndexRoute
   '/startups/': typeof StartupsIndexRoute
   '/team/': typeof TeamIndexRoute
+  '/api/public/prototype-assessment': typeof ApiPublicPrototypeAssessmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -301,6 +311,7 @@ export interface FileRouteTypes {
     | '/services/'
     | '/startups/'
     | '/team/'
+    | '/api/public/prototype-assessment'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/startups'
     | '/team'
+    | '/api/public/prototype-assessment'
   id:
     | '__root__'
     | '/'
@@ -361,6 +373,7 @@ export interface FileRouteTypes {
     | '/services/'
     | '/startups/'
     | '/team/'
+    | '/api/public/prototype-assessment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -392,6 +405,7 @@ export interface RootRouteChildren {
   ServicesIndexRoute: typeof ServicesIndexRoute
   StartupsIndexRoute: typeof StartupsIndexRoute
   TeamIndexRoute: typeof TeamIndexRoute
+  ApiPublicPrototypeAssessmentRoute: typeof ApiPublicPrototypeAssessmentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -592,6 +606,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeamSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/prototype-assessment': {
+      id: '/api/public/prototype-assessment'
+      path: '/api/public/prototype-assessment'
+      fullPath: '/api/public/prototype-assessment'
+      preLoaderRoute: typeof ApiPublicPrototypeAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -624,6 +645,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesIndexRoute: ServicesIndexRoute,
   StartupsIndexRoute: StartupsIndexRoute,
   TeamIndexRoute: TeamIndexRoute,
+  ApiPublicPrototypeAssessmentRoute: ApiPublicPrototypeAssessmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -9,7 +9,7 @@ export const Route = createFileRoute("/research")({
     { property: "og:title", content: "Our Research & Analysis | Riloyd" },
     { property: "og:description", content: "In-depth research and analysis of startups, businesses and ideas, with downloadable Riloyd research reports." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
-  ] }), component: ResearchPage,
+  ], links: [{ rel: "canonical", href: "/research" }] }), component: ResearchPage,
 });
 
 const focusAreas = [

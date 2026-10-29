@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { ArrowRight, Check, FlaskConical, Lightbulb, Mail, ShieldCheck, Sprout, Video, GraduationCap, Rocket, MapPin } from "lucide-react";
+import { ArrowRight, Check, Download, FlaskConical, Lightbulb, Mail, ShieldCheck, Sprout, Video, GraduationCap, Rocket, MapPin } from "lucide-react";
+import { PrototypeAssessment } from "@/components/prototype-assessment";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ideaVideoTimeline, prototypeEligibility, prototypePitchTimeline, prototypeProgramme, prototypeRegistrationTotal, prototypeScorecard } from "@/lib/prototype-programme";
@@ -17,14 +18,14 @@ export const Route = createFileRoute("/prototype-funding")({
     { title }, { name: "description", content: description },
     { property: "og:title", content: title }, { property: "og:description", content: description },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  ], links: [{ rel: "canonical", href: "/prototype-funding" }] }),
   component: PrototypeFundingPage,
 });
 
 function ProgrammeSection({ id, kicker, title: sectionTitle, children, surface = false }: { id?: string; kicker: string; title: string; children: ReactNode; surface?: boolean }) {
   return <section id={id} className={`scroll-mt-8 border-b border-border ${surface ? "bg-surface" : "bg-background"}`}>
     <div className="mx-auto max-w-[1380px] px-5 py-12 sm:px-6 lg:px-12 lg:py-16">
-      <p className="flex items-center gap-3 text-xs font-bold uppercase text-primary"><span aria-hidden="true" className="h-0.5 w-8 bg-prototype-green" />{kicker}</p>
+      <p className="flex items-center gap-3 text-xs font-bold uppercase text-primary"><span aria-hidden="true" className="h-0.5 w-8 bg-primary" />{kicker}</p>
       <h2 className="mt-3 max-w-3xl text-3xl font-black leading-tight sm:text-4xl">{sectionTitle}</h2>
       <div className="mt-8">{children}</div>
     </div>
@@ -37,19 +38,20 @@ function PrototypeFundingPage() {
       <img src={prototypeImage} width={1920} height={1088} alt="Young Indian founders testing an agricultural sensor prototype together in a campus makerspace" className="absolute inset-0 h-full w-full object-cover object-center" fetchPriority="high" />
       <div className="hero-shade absolute inset-0" />
       <div className="relative z-10 mx-auto max-w-[1380px] px-5 py-14 sm:px-6 lg:px-12 lg:py-20">
-        <p className="flex items-center gap-2 text-xs font-bold uppercase text-prototype-saffron"><Rocket size={16} />Riloyd · Young India. Bold ideas.</p>
+        <p className="flex items-center gap-2 text-xs font-bold uppercase text-primary"><Rocket size={16} />Riloyd · Young India. Bold ideas.</p>
         <h1 className="headline mt-4 max-w-2xl text-4xl font-black uppercase leading-tight sm:text-5xl lg:text-6xl">Prototype &amp;<br />Seed Funding</h1>
-        <p className="mt-5 max-w-xl text-xl font-bold text-foreground">सोच नई। शुरुआत अपनी।</p>
+        <p className="mt-5 max-w-xl text-xl font-bold text-foreground">Fresh thinking. Your own beginning.</p>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-soft sm:text-base">From a campus idea to your first working prototype. Bring your curiosity, identify a real problem, and pitch what you want to build. Your startup journey can begin before you have a company.</p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button asChild size="lg"><a href="#registration">Registration &amp; next steps <ArrowRight /></a></Button>
           <Button asChild size="lg" variant="outline"><a href="#eligibility">Check eligibility <ShieldCheck /></a></Button>
+          <Button asChild size="lg" variant="outline"><a href="#idea-assessment">AI idea assessment <ArrowRight /></a></Button>
         </div>
         <p className="mt-6 text-sm font-bold text-soft">₹{prototypeProgramme.registrationFee}/- +{prototypeProgramme.gstPercent}% GST · Idea-stage founders welcome</p>
       </div>
     </section>
 
-    <section className="border-b border-border bg-prototype-green text-primary-foreground">
+    <section className="border-b border-border bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-[1380px] grid-cols-2 gap-6 px-5 py-7 sm:grid-cols-4 sm:px-6 lg:px-12">
         {[["₹999 + GST", "Registration"], [`${prototypeProgramme.videoMaxSeconds} seconds`, "Idea video"], [`${prototypeProgramme.pitchMaxMinutes} minutes`, "Shortlisted pitch"], ["Idea → Prototype", "Programme focus"]].map(([value, label]) => <div key={label}><p className="text-xl font-black sm:text-2xl">{value}</p><p className="mt-1 text-xs">{label}</p></div>)}
       </div>
@@ -57,13 +59,13 @@ function PrototypeFundingPage() {
 
     <ProgrammeSection kicker="The next generation of Indian founders" title="Young India doesn't just dream. It builds.">
       <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
-        <figure><img src={campusImage} width={1536} height={1024} alt="Young Indian makers collaborating on a clean-energy prototype in a college innovation studio" className="aspect-[3/2] w-full rounded-md object-cover" loading="lazy" /><figcaption className="mt-3 flex items-center gap-2 text-xs font-semibold text-muted-foreground"><span className="h-2 w-2 rounded-full bg-prototype-green" />Imagine it. Make it. Test it.</figcaption></figure>
+        <figure><img src={campusImage} width={1536} height={1024} alt="Young Indian makers collaborating on a clean-energy prototype in a college innovation studio" className="aspect-[3/2] w-full rounded-md object-cover" loading="lazy" /><figcaption className="mt-3 flex items-center gap-2 text-xs font-semibold text-muted-foreground"><span className="h-2 w-2 rounded-full bg-primary" />Imagine it. Make it. Test it.</figcaption></figure>
         <div><p className="text-lg font-semibold leading-relaxed">Big possibilities can begin with a small prototype.</p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">A classroom observation, a problem in your neighbourhood, or a better way to do everyday work—your starting point does not need to be perfect. Riloyd's programme puts the focus on original ideas, practical experiments, and the people ready to take the first step.</p>
           <div className="mt-6 space-y-5">{[
             [GraduationCap, "Campus curiosity", "Students and young makers can turn learning into a practical idea, subject to the programme's eligibility criteria."],
             [MapPin, "Local problems. Fresh solutions.", "Start with the people around you. Explain who needs your solution and how a prototype could help."],
             [Rocket, "First-time founder energy", "You do not need a registered company to begin. Bring an original idea, a clear plan, and honest progress."],
-          ].map(([Icon, heading, copy]) => Icon && typeof Icon !== "string" && <div key={String(heading)} className="flex gap-4 border-b border-border pb-4"><Icon className="mt-1 shrink-0 text-prototype-green" size={22} /><div><h3 className="text-sm font-bold">{String(heading)}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{String(copy)}</p></div></div>)}</div>
+          ].map(([Icon, heading, copy]) => Icon && typeof Icon !== "string" && <div key={String(heading)} className="flex gap-4 border-b border-border pb-4"><Icon className="mt-1 shrink-0 text-primary" size={22} /><div><h3 className="text-sm font-bold">{String(heading)}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{String(copy)}</p></div></div>)}</div>
           <p className="mt-5 text-xs leading-relaxed text-muted-foreground">A Riloyd initiative for India's startup spirit. No official affiliation with the Government of India's Startup India initiative is claimed.</p>
         </div>
       </div>
@@ -83,13 +85,17 @@ function PrototypeFundingPage() {
       <p className="mt-6 text-sm leading-relaxed text-muted-foreground">Eligible ideas should have a meaningful problem, a clear solution benefit, a realistic prototype plan and lawful, safe, ethical use. Founders should be available for screening, pitching and progress updates.</p>
     </ProgrammeSection>
 
+    <ProgrammeSection id="idea-assessment" kicker="AI-powered eligibility review" title="Where does your idea fit?" surface>
+      <PrototypeAssessment />
+    </ProgrammeSection>
+
     <ProgrammeSection kicker="Application journey" title="From a short idea video to a focused pitch.">
       <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{[["Idea video", "Prepare a clear explanation of up to 60 seconds."], ["Registration", "Complete the application and provide accurate details."], ["Screening", "Eligibility, originality, clarity and feasibility are reviewed. Clarifications may be requested."], ["Pitching", "Only shortlisted applicants present a pitch of up to 5 minutes."]].map(([heading, copy], index) => <li key={heading} className="border-t border-border pt-5"><span className="text-3xl font-black text-primary">0{index + 1}</span><h3 className="mt-3 text-base font-bold">{heading}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{copy}</p></li>)}</ol>
     </ProgrammeSection>
 
     <ProgrammeSection id="video-guidelines" kicker="Startup video submission guidelines" title="60 seconds. Your idea, clearly explained." surface>
       <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-        <div><img src={videoImage} width={1536} height={1024} alt="A young Indian founder explaining her water-quality sensor prototype to a smartphone camera" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" loading="lazy" /><div className="flex items-center gap-3"><Video className="text-prototype-green" size={24} /><h3 className="text-base font-bold">Your idea. Your voice.</h3></div><p className="mt-4 text-sm leading-relaxed text-muted-foreground">A simple explanation is enough—high production value is not required. MP4 is preferred; vertical 9:16 is recommended. Use a clear voice, steady frame, and simple background.</p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Use original content. Do not include trade secrets or private customer information. You do not need to create a separate promotional reel for Riloyd.</p></div>
+        <div><img src={videoImage} width={1536} height={1024} alt="A young Indian founder explaining her water-quality sensor prototype to a smartphone camera" className="mb-5 aspect-[3/2] w-full rounded-md object-cover" loading="lazy" /><div className="flex items-center gap-3"><Video className="text-primary" size={24} /><h3 className="text-base font-bold">Your idea. Your voice.</h3></div><p className="mt-4 text-sm leading-relaxed text-muted-foreground">A simple explanation is enough—high production value is not required. MP4 is preferred; vertical 9:16 is recommended. Use a clear voice, steady frame, and simple background.</p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Use original content. Do not include trade secrets or private customer information. You do not need to create a separate promotional reel for Riloyd.</p><Button asChild variant="outline" className="mt-5"><a href="/downloads/riloyd-prototype-applicant-checklist.pdf" download><Download />Download applicant checklist</a></Button></div>
         <ol className="space-y-4">{ideaVideoTimeline.map(([time, heading, copy]) => <li key={time} className="grid grid-cols-[90px_1fr] gap-4 border-b border-border pb-4"><span className="text-sm font-bold text-primary">{time}</span><div><h3 className="text-sm font-bold">{heading}</h3><p className="mt-1 text-sm text-muted-foreground">{copy}</p></div></li>)}</ol>
       </div>
     </ProgrammeSection>
@@ -108,7 +114,7 @@ function PrototypeFundingPage() {
     </ProgrammeSection>
 
     <ProgrammeSection id="registration" kicker="Registration fee" title="₹999/- +18% GST" surface>
-      <div className="grid gap-8 lg:grid-cols-2"><div><p className="text-3xl font-black">₹{prototypeRegistrationTotal().toLocaleString("en-IN", { minimumFractionDigits: 2 })} <span className="text-sm font-normal text-muted-foreground">including GST</span></p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">This is the separate Prototype &amp; Seed Funding programme fee. Registration, screening, shortlisting or pitching does not guarantee a grant, investment, investor meeting or selection.</p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Confirm the official application channel, current availability, and payment instructions with the Riloyd team before paying. Contact the team for the programme-specific application link.</p></div><div className="border-l-2 border-prototype-green pl-6"><Lightbulb className="text-prototype-green" /><h3 className="mt-4 text-xl font-bold">Ready to build your first big idea?</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Contact the team to request the Prototype Funding application and instructions for submitting your video securely.</p><div className="mt-5 flex flex-wrap gap-3"><Button asChild><a href="mailto:idea@riloyd.in?subject=Prototype%20Funding%20Programme%20Application"><Mail /> Request application details</a></Button><Button asChild variant="outline"><Link to="/contact" hash="message">Contact the team <ArrowRight /></Link></Button></div></div></div>
+      <div className="grid gap-8 lg:grid-cols-2"><div><p className="text-3xl font-black">₹{prototypeRegistrationTotal().toLocaleString("en-IN", { minimumFractionDigits: 2 })} <span className="text-sm font-normal text-muted-foreground">including GST</span></p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">This is the separate Prototype &amp; Seed Funding programme fee. Registration, screening, shortlisting or pitching does not guarantee a grant, investment, investor meeting or selection.</p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Confirm the official application channel, current availability, and payment instructions with the Riloyd team before paying. Contact the team for the programme-specific application link.</p></div><div className="border-l-2 border-primary pl-6"><Lightbulb className="text-primary" /><h3 className="mt-4 text-xl font-bold">Ready to build your first big idea?</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Contact the team to request the Prototype Funding application and instructions for submitting your video securely.</p><div className="mt-5 flex flex-wrap gap-3"><Button asChild><a href="mailto:idea@riloyd.in?subject=Prototype%20Funding%20Programme%20Application"><Mail /> Request application details</a></Button><Button asChild variant="outline"><Link to="/contact" hash="message">Contact the team <ArrowRight /></Link></Button></div></div></div>
     </ProgrammeSection>
 
     <ProgrammeSection kicker="Funding conditions & fairness" title="Clear expectations. Responsible support.">
