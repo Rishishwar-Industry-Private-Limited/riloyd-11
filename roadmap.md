@@ -13,3 +13,6 @@
 - [x] Replace Britain light-theme logo with newly uploaded file
 - [x] Verify Europe + UAE + Britain logos in both themes in browser
 - [ ] Britain dark-theme logo: waiting on user upload (only the light variant arrived; earlier dark upload was blank)
+- [x] Footer copyright: fit the three legal lines on one row each on phones
+- [x] Mobile footer: Our Services left, Downloads right
+- [x] Mobile footer: Follow Us moved into Contact below the office addresses
