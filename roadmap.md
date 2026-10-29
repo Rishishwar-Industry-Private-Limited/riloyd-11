@@ -1,11 +1,12 @@
 # Roadmap
 
-- [ ] Redesign Payment page, display all six verified accounts, and add Payment link under footer About Us
+- [x] Redesign Payment page, display all six verified accounts, and add Payment link under footer About Us
 
-- [ ] Perform full-site deep SEO review and address verified issues; ranking is not guaranteed
+- [x] Perform full-site source SEO review, fix stale website identity/canonical tags, add service structured data, and check 22 public URLs
+- [ ] Finish public sitemap and Google indexing verification: waiting for the website to be published with its public address; rankings cannot be guaranteed
 
-- [ ] Add AI prototype eligibility advisory and downloadable applicant checklist
-- [ ] Restore Prototype Funding to the shared website theme and keep the entire page English-only
+- [x] Add AI prototype eligibility advisory and downloadable applicant checklist
+- [x] Restore Prototype Funding to the shared website theme and keep the entire page English-only
 
 - [x] Refresh Prototype Funding with young India imagery and check programme wording
 - [x] Add separate Prototype & Seed Funding page with supplied eligibility/video guidelines, ₹999 +18% GST and Explore link
