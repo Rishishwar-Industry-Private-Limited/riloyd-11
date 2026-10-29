@@ -36,7 +36,7 @@ export const Route = createFileRoute("/")({
         content:
           "Riloyd helps ambitious businesses secure funding, sharpen strategy and achieve measurable growth.",
       },
-      { property: "og:title", content: "Riloyd | Business Beyond Limits" },
+      { property: "og:title", content: "Riloyd | Business Funding & Transformation" },
       {
         property: "og:description",
         content: "Strategy, funding and transformation for stronger businesses.",
@@ -44,6 +44,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });

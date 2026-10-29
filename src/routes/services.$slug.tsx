@@ -10,7 +10,7 @@ import { GrowthDetail } from "@/components/services/growth-detail";
 import { IncubationDetail } from "@/components/services/incubation-detail";
 
 function findService(slug: string): ServiceConfig | undefined {
-  return serviceOrder.map((key) => serviceConfigs[key]!).find((service) => service.slug === slug);
+  return serviceOrder.map((key) => serviceConfigs[key]).find((service) => service?.slug === slug);
 }
 
 export const Route = createFileRoute("/services/$slug")({
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/services/$slug")({
     if (!loaderData) {
       return { meta: [{ title: "Service unavailable | Riloyd" }, { name: "robots", content: "noindex" }] };
     }
-    const { title, description } = loaderData.service;
+    const { title, description, slug } = loaderData.service;
     return {
       meta: [
         { title: `${title} | Riloyd` },
@@ -33,6 +33,11 @@ export const Route = createFileRoute("/services/$slug")({
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: `/services/${slug}` }],
+      scripts: [{ type: "application/ld+json", children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "Service", name: title, description,
+        provider: { "@type": "Organization", name: "Riloyd" },
+      }) }],
     };
   },
   component: ServiceDetail,
@@ -40,7 +45,7 @@ export const Route = createFileRoute("/services/$slug")({
 
 function ServiceDetail() {
   const { service } = Route.useLoaderData();
-  const others = serviceOrder.map((key) => serviceConfigs[key]!).filter((item) => item.slug !== service.slug);
+  const others = serviceOrder.map((key) => serviceConfigs[key]).filter((item): item is ServiceConfig => Boolean(item) && item?.slug !== service.slug);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
