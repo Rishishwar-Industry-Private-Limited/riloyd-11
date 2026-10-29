@@ -39,7 +39,7 @@ import gatheringExpo from "@/assets/local/gathering-expo.webp";
 import gatheringBadges from "@/assets/local/gathering-badges.webp";
 import gatheringHall from "@/assets/local/gathering-hall.webp";
 import gatheringVideo from "@/assets/videos/funding-gathering-autoplay.mp4.asset.json";
-import gatheringVideoWebm from "@/assets/videos/funding-gathering-autoplay.webm.asset.json";
+import { ViewportVideo } from "@/components/viewport-video";
 
 const ZOHOPUBLIC = "https://forms.zohopublic.in/RIPLSTORES/form/StartupIdeaRegistrationForm/formperma/1SNzTjiKwSF14T0BCEyJLvZCZDDowZl3NYWbAjpy1KE";
 
@@ -366,7 +366,7 @@ function FundingProgramme() {
           </div>
           <div className="grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:auto-rows-[180px] md:grid-cols-4">
             <div className="relative col-span-2 row-span-2 overflow-hidden rounded-lg border border-border bg-background">
-              <video autoPlay muted loop playsInline preload="metadata" poster={gatheringStage} className="h-full w-full object-cover" aria-label="Highlights from the previous Riloyd startup gathering"><source src={gatheringVideo.url} type="video/mp4" /><source src={gatheringVideoWebm.url} type="video/webm" /></video>
+              <ViewportVideo src={gatheringVideo.url} poster={gatheringStage} className="h-full w-full object-cover" label="Highlights from the previous Riloyd startup gathering" />
               <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">● Event highlights</span>
             </div>
             {[[gatheringPitch,"Founders pitching on the Riloyd stage"],[gatheringExpo,"Networking across the expo floor"],[gatheringRegistration,"Registration desk"],[gatheringBadges,"Startup, investor & mentor passes"],[gatheringHall,"The main summit hall"],[gatheringKit,"Participant welcome kit"]].map(([src,label], i) => (

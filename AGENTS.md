@@ -33,3 +33,4 @@
 - Keep the separate prototype programme's rules and timelines in a browser-safe module used by its page and tests; do not reuse summit registration or claim a programme-specific submission destination until verified, so programme prices and applications stay distinct.
 - Prototype eligibility AI uses a validated same-origin streaming server route, shared published criteria and a durable service-only access-denial circuit breaker; it never stores descriptions or submits applications, so advice stays separate from selection.
 - Generate the static applicant PDF from the shared prototype programme module and ship it under public/downloads; regenerate after criteria changes so the download stays aligned with the page.
+- Use small country preview images for market cards, retain full-HD country heroes, and attach silent autoplay video only near the viewport, so offscreen media does not compete with the first screen.
