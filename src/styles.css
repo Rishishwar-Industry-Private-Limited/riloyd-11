@@ -288,3 +288,8 @@
   --muted-foreground: var(--card-foreground);
   --soft: var(--card-foreground);
 }
+
+/* Footer copyright: each of the three legal lines must stay on one row on phones,
+   so the size shrinks just enough as the screen narrows. */
+.copyright-bar { font-size: max(7px, min(9px, 2.1vw)); }
+@media (min-width: 640px) { .copyright-bar { font-size: 10px; } }
