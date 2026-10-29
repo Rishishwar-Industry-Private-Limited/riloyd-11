@@ -1,5 +1,8 @@
 # Roadmap
 
+- [ ] Reduce initial scripts with route/component splitting and deferred nonessential tools
+- [ ] Add an India-focused Prototype Funding presentation in English, retaining the site theme and clear independent-programme status
+
 - [x] Optimize whole-site loading without changing design; verify main pages, images and autoplay video
 - [ ] Reset remixed project migration history: blocked by protected migration journal; original SQL/snapshot restored to keep history consistent
 
