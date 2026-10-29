@@ -365,8 +365,8 @@ function FundingProgramme() {
           </div>
           <div className="grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:auto-rows-[180px] md:grid-cols-4">
             <div className="relative col-span-2 row-span-2 overflow-hidden rounded-lg border border-border bg-background">
-              <video src={gatheringVideo.url} autoPlay muted loop playsInline preload="metadata" poster={gatheringStage} className="h-full w-full object-cover" aria-label="Highlights from the previous Riloyd startup gathering" />
-              <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">● Event highlights</span>
+              <video src={gatheringVideo.url} autoPlay muted loop playsInline controls preload="metadata" poster={gatheringStage} className="h-full w-full object-cover" aria-label="Highlights from the previous Riloyd startup gathering" />
+              <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">● Event highlights</span>
             </div>
             {[[gatheringPitch,"Founders pitching on the Riloyd stage"],[gatheringExpo,"Networking across the expo floor"],[gatheringRegistration,"Registration desk"],[gatheringBadges,"Startup, investor & mentor passes"],[gatheringHall,"The main summit hall"],[gatheringKit,"Participant welcome kit"]].map(([src,label], i) => (
               <figure key={label} className={`group relative overflow-hidden rounded-lg border border-border ${i >= 4 ? "md:col-span-2" : ""}`}><img src={src} alt={label} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/60 to-transparent px-3 pb-2.5 pt-10 text-[11px] font-extrabold uppercase tracking-wide">{label}</figcaption></figure>
