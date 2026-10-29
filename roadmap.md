@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Redesign Payment page, display all six verified accounts, and add Payment link under footer About Us
+
 - [ ] Perform full-site deep SEO review and address verified issues; ranking is not guaranteed
 
 - [ ] Add AI prototype eligibility advisory and downloadable applicant checklist
