@@ -20,7 +20,7 @@ export const getCountryLogos = createServerFn({ method: "GET" }).handler(async (
     const metadata = countryLogoSchema.parse(row);
     const { data: signed, error: signError } = await client.storage.from("country-logos").createSignedUrl(row.file_path, 3600);
     if (signError || !signed) throw new Error("Country logo could not be loaded.");
-    const browserUrl = new URL(import.meta.env.VITE_SUPABASE_URL);
+    const browserUrl = new URL(import.meta.env['VITE_SUPABASE_URL']);
     const assetUrl = new URL(signed.signedUrl);
     assetUrl.host = browserUrl.host; assetUrl.protocol = browserUrl.protocol;
     return { ...metadata, url: assetUrl.toString() };
