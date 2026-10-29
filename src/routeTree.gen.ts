@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as FundingProgrammeRouteImport } from './routes/funding-programme'
 import { Route as PaymentRouteImport } from './routes/payment'
+import { Route as PrototypeFundingRouteImport } from './routes/prototype-funding'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as BusinessesIndexRouteImport } from './routes/businesses.index'
 import { Route as BusinessesSlugRouteImport } from './routes/businesses.$slug'
@@ -70,6 +71,11 @@ const FundingProgrammeRoute = FundingProgrammeRouteImport.update({
 const PaymentRoute = PaymentRouteImport.update({
   id: '/payment',
   path: '/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrototypeFundingRoute = PrototypeFundingRouteImport.update({
+  id: '/prototype-funding',
+  path: '/prototype-funding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResearchRoute = ResearchRouteImport.update({
@@ -181,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/downloads': typeof DownloadsRoute
   '/funding-programme': typeof FundingProgrammeRoute
   '/payment': typeof PaymentRoute
+  '/prototype-funding': typeof PrototypeFundingRoute
   '/research': typeof ResearchRoute
   '/businesses/$slug': typeof BusinessesSlugRoute
   '/global-presence/$slug': typeof GlobalPresenceSlugRoute
@@ -210,6 +217,7 @@ export interface FileRoutesByTo {
   '/downloads': typeof DownloadsRoute
   '/funding-programme': typeof FundingProgrammeRoute
   '/payment': typeof PaymentRoute
+  '/prototype-funding': typeof PrototypeFundingRoute
   '/research': typeof ResearchRoute
   '/businesses/$slug': typeof BusinessesSlugRoute
   '/global-presence/$slug': typeof GlobalPresenceSlugRoute
@@ -240,6 +248,7 @@ export interface FileRoutesById {
   '/downloads': typeof DownloadsRoute
   '/funding-programme': typeof FundingProgrammeRoute
   '/payment': typeof PaymentRoute
+  '/prototype-funding': typeof PrototypeFundingRoute
   '/research': typeof ResearchRoute
   '/businesses/$slug': typeof BusinessesSlugRoute
   '/global-presence/$slug': typeof GlobalPresenceSlugRoute
@@ -271,6 +280,7 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/funding-programme'
     | '/payment'
+    | '/prototype-funding'
     | '/research'
     | '/businesses/$slug'
     | '/global-presence/$slug'
@@ -300,6 +310,7 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/funding-programme'
     | '/payment'
+    | '/prototype-funding'
     | '/research'
     | '/businesses/$slug'
     | '/global-presence/$slug'
@@ -329,6 +340,7 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/funding-programme'
     | '/payment'
+    | '/prototype-funding'
     | '/research'
     | '/businesses/$slug'
     | '/global-presence/$slug'
@@ -359,6 +371,7 @@ export interface RootRouteChildren {
   DownloadsRoute: typeof DownloadsRoute
   FundingProgrammeRoute: typeof FundingProgrammeRoute
   PaymentRoute: typeof PaymentRoute
+  PrototypeFundingRoute: typeof PrototypeFundingRoute
   ResearchRoute: typeof ResearchRoute
   BusinessesSlugRoute: typeof BusinessesSlugRoute
   GlobalPresenceSlugRoute: typeof GlobalPresenceSlugRoute
@@ -430,6 +443,13 @@ declare module '@tanstack/react-router' {
       path: '/payment'
       fullPath: '/payment'
       preLoaderRoute: typeof PaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prototype-funding': {
+      id: '/prototype-funding'
+      path: '/prototype-funding'
+      fullPath: '/prototype-funding'
+      preLoaderRoute: typeof PrototypeFundingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/research': {
@@ -583,6 +603,7 @@ const rootRouteChildren: RootRouteChildren = {
   DownloadsRoute: DownloadsRoute,
   FundingProgrammeRoute: FundingProgrammeRoute,
   PaymentRoute: PaymentRoute,
+  PrototypeFundingRoute: PrototypeFundingRoute,
   ResearchRoute: ResearchRoute,
   BusinessesSlugRoute: BusinessesSlugRoute,
   GlobalPresenceSlugRoute: GlobalPresenceSlugRoute,

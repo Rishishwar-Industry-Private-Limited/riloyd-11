@@ -1,5 +1,8 @@
 # Roadmap
 
+- [x] Add separate Prototype & Seed Funding page with supplied eligibility/video guidelines, ₹999 +18% GST and Explore link
+- [ ] Connect a programme-specific prototype application/video submission link: waiting on the official destination; page currently directs applicants to the team
+
 - [x] Restore uploaded funding video with autoplay and no controls
 - [x] Show India registration options: ₹2,999 +18% GST for up to 2 people; ₹1,499 +18% GST for up to 1 person per startup/idea
 
