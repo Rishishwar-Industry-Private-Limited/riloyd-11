@@ -9,7 +9,7 @@ import { InternationalEnrolment } from "@/components/international-enrolment";
 import { internationalServices, marketContext, type ProgrammeCountry } from "@/lib/international-programme";
 import { serviceDepth } from "@/lib/country-page-content";
 import { CountryMarketBrief, CountryAdvisorySections, CountryProgrammeDetails } from "@/components/country-page-sections";
-import mentorship from "@/assets/international-mentorship.jpg";
+import mentorship from "@/assets/international-mentorship.webp";
 
 export const Route = createFileRoute("/global-presence/$slug")({
   loader: ({ context }) => context.queryClient.ensureQueryData(programmeFeesQuery),
