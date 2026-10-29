@@ -1,5 +1,6 @@
 # Roadmap
 
+- [ ] Refresh Prototype Funding with young India imagery and check programme wording
 - [x] Add separate Prototype & Seed Funding page with supplied eligibility/video guidelines, ₹999 +18% GST and Explore link
 - [ ] Connect a programme-specific prototype application/video submission link: waiting on the official destination; page currently directs applicants to the team
 
