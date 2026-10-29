@@ -1,4 +1,9 @@
 import type * as React from "react";
+import { useState } from "react";
+import { InternationalEnrolment } from "@/components/international-enrolment";
+import { programmeFeesQuery } from "@/lib/programme-fees-query";
+import { marketConfigs, marketOrder } from "@/lib/market-config";
+import type { ProgrammeCountry } from "@/lib/international-programme";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -98,11 +103,11 @@ const canApply = [
 const faqs = [
   [
     "What is the registration fee?",
-    "The registration fee is ₹2,999 plus 18% GST and includes participation for up to two persons per startup. Beyond the first two persons, each additional participant is ₹2,000 plus 18% GST.",
+    "For India, the registration fee is ₹2,999 plus 18% GST and includes participation for up to two persons per startup. Beyond the first two persons, each additional participant is ₹2,000 plus 18% GST. Current international country-specific fees are shown in the international registration section.",
   ],
   [
     "Who can participate?",
-    "Early-stage startups, student-led startups, founders with innovative business ideas, product or service based businesses, growth-stage businesses and funding-ready startups can apply.",
+    "Indian and international early-stage startups, student-led startups, founders with innovative business ideas, product or service based businesses, growth-stage businesses and funding-ready startups can apply.",
   ],
   [
     "Is there support for early ideas?",
@@ -139,6 +144,7 @@ const faqs = [
 ];
 
 export const Route = createFileRoute("/funding-programme")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(programmeFeesQuery),
   head: () => ({
     meta: [
       { title: "Startup Funding Programme | Riloyd" },
@@ -146,10 +152,10 @@ export const Route = createFileRoute("/funding-programme")({
       { property: "og:title", content: "Startup Funding Programme | Riloyd" },
       { property: "og:description", content: "Pitch, connect, raise and grow. Non-refundable grants of up to ₹20 Lakhs for the top five startups, with mentorship and investor connect." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/funding-programme" },
+      { property: "og:url", content: "https://riloyd-global-atlas.lovable.app/funding-programme" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/funding-programme" }],
+    links: [{ rel: "canonical", href: "https://riloyd-global-atlas.lovable.app/funding-programme" }],
   }),
   component: FundingProgramme,
 });
@@ -179,6 +185,7 @@ const included = [
 ];
 
 function FundingProgramme() {
+  const [programmeCountry, setProgrammeCountry] = useState<ProgrammeCountry>("usa");
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <section className="hero-shell relative border-b border-border lg:flex lg:min-h-[92svh] lg:items-center">
@@ -189,7 +196,7 @@ function FundingProgramme() {
             <div className="max-w-2xl">
               <p className="eyebrow mb-4 text-xs font-bold uppercase">Riloyd Startup Summit 2026 · Gwalior</p>
               <h1 className="headline text-[clamp(2.4rem,5vw,4.8rem)] font-black uppercase leading-[0.9]">Turn your idea into a <span className="text-primary">fundable</span> &amp; scalable business</h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-soft md:text-lg">Three days. One stage. ₹20 Lakhs in grants for the top five startups and up to ₹5 Crore investor funding opportunity.</p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-soft md:text-lg">Indian and international startups and ideas. Three days. One stage. ₹20 Lakhs in grants for the top five startups and up to ₹5 Crore investor funding opportunity.</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a href="#register" className="solid-cta inline-flex items-center gap-3 rounded-md bg-primary px-8 py-3.5 text-sm font-extrabold text-primary-foreground">Apply Now <ArrowRight size={17} /></a>
                 <a href="#prototype" className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3.5 text-sm font-bold">Submit Your Idea</a>
@@ -294,7 +301,10 @@ function FundingProgramme() {
         </div>
       </Section>
 
-      <Section kicker="Fees & Free Benefits" title={<>Simple pricing, <span className="text-primary">stay covered</span></>}>
+      <section className="border-b border-border px-5 py-8 sm:px-6 lg:px-12"><div className="mx-auto max-w-[1380px]"><h2 className="text-2xl font-black">International startup & idea registration</h2><label htmlFor="programme-country" className="mt-5 block text-sm font-bold">Applicant country / market</label><select id="programme-country" value={programmeCountry} onChange={event => { const next = marketOrder.find(key => key === event.target.value); if (next) setProgrammeCountry(next); }} className="mt-2 h-11 w-full max-w-md rounded-md border border-input bg-background px-3 text-sm">{marketOrder.map(key => <option key={key} value={key}>{marketConfigs[key].name}</option>)}</select></div></section>
+      <InternationalEnrolment country={programmeCountry} />
+
+      <Section kicker="India Fees & Free Benefits" title={<>Simple pricing, <span className="text-primary">stay covered</span></>}>
         <div className="grid gap-4 lg:grid-cols-[1fr_1.6fr_1fr]">
           <div className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface">
             <p className="border-b border-border bg-primary px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground">Registration Fee</p>

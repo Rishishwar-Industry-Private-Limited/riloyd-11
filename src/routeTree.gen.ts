@@ -15,10 +15,11 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as FundingProgrammeRouteImport } from './routes/funding-programme'
-import { Route as GlobalPresenceRouteImport } from './routes/global-presence'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as BusinessesIndexRouteImport } from './routes/businesses.index'
 import { Route as BusinessesSlugRouteImport } from './routes/businesses.$slug'
+import { Route as GlobalPresenceIndexRouteImport } from './routes/global-presence.index'
 import { Route as GlobalPresenceSlugRouteImport } from './routes/global-presence.$slug'
 import { Route as InvestorsIndexRouteImport } from './routes/investors.index'
 import { Route as InvestorsSlugRouteImport } from './routes/investors.$slug'
@@ -66,9 +67,9 @@ const FundingProgrammeRoute = FundingProgrammeRouteImport.update({
   path: '/funding-programme',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GlobalPresenceRoute = GlobalPresenceRouteImport.update({
-  id: '/global-presence',
-  path: '/global-presence',
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResearchRoute = ResearchRouteImport.update({
@@ -86,10 +87,15 @@ const BusinessesSlugRoute = BusinessesSlugRouteImport.update({
   path: '/businesses/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GlobalPresenceIndexRoute = GlobalPresenceIndexRouteImport.update({
+  id: '/global-presence/',
+  path: '/global-presence/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GlobalPresenceSlugRoute = GlobalPresenceSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => GlobalPresenceRoute,
+  id: '/global-presence/$slug',
+  path: '/global-presence/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const InvestorsIndexRoute = InvestorsIndexRouteImport.update({
   id: '/investors/',
@@ -174,7 +180,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
   '/funding-programme': typeof FundingProgrammeRoute
-  '/global-presence': typeof GlobalPresenceRouteWithChildren
+  '/payment': typeof PaymentRoute
   '/research': typeof ResearchRoute
   '/businesses/$slug': typeof BusinessesSlugRoute
   '/global-presence/$slug': typeof GlobalPresenceSlugRoute
@@ -188,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/startups/$slug': typeof StartupsSlugRoute
   '/team/$slug': typeof TeamSlugRoute
   '/businesses/': typeof BusinessesIndexRoute
+  '/global-presence/': typeof GlobalPresenceIndexRoute
   '/investors/': typeof InvestorsIndexRoute
   '/mentors/': typeof MentorsIndexRoute
   '/register/': typeof RegisterIndexRoute
@@ -202,7 +209,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
   '/funding-programme': typeof FundingProgrammeRoute
-  '/global-presence': typeof GlobalPresenceRouteWithChildren
+  '/payment': typeof PaymentRoute
   '/research': typeof ResearchRoute
   '/businesses/$slug': typeof BusinessesSlugRoute
   '/global-presence/$slug': typeof GlobalPresenceSlugRoute
@@ -216,6 +223,7 @@ export interface FileRoutesByTo {
   '/startups/$slug': typeof StartupsSlugRoute
   '/team/$slug': typeof TeamSlugRoute
   '/businesses': typeof BusinessesIndexRoute
+  '/global-presence': typeof GlobalPresenceIndexRoute
   '/investors': typeof InvestorsIndexRoute
   '/mentors': typeof MentorsIndexRoute
   '/register': typeof RegisterIndexRoute
@@ -231,7 +239,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
   '/funding-programme': typeof FundingProgrammeRoute
-  '/global-presence': typeof GlobalPresenceRouteWithChildren
+  '/payment': typeof PaymentRoute
   '/research': typeof ResearchRoute
   '/businesses/$slug': typeof BusinessesSlugRoute
   '/global-presence/$slug': typeof GlobalPresenceSlugRoute
@@ -245,6 +253,7 @@ export interface FileRoutesById {
   '/startups/$slug': typeof StartupsSlugRoute
   '/team/$slug': typeof TeamSlugRoute
   '/businesses/': typeof BusinessesIndexRoute
+  '/global-presence/': typeof GlobalPresenceIndexRoute
   '/investors/': typeof InvestorsIndexRoute
   '/mentors/': typeof MentorsIndexRoute
   '/register/': typeof RegisterIndexRoute
@@ -261,7 +270,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/downloads'
     | '/funding-programme'
-    | '/global-presence'
+    | '/payment'
     | '/research'
     | '/businesses/$slug'
     | '/global-presence/$slug'
@@ -275,6 +284,7 @@ export interface FileRouteTypes {
     | '/startups/$slug'
     | '/team/$slug'
     | '/businesses/'
+    | '/global-presence/'
     | '/investors/'
     | '/mentors/'
     | '/register/'
@@ -289,7 +299,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/downloads'
     | '/funding-programme'
-    | '/global-presence'
+    | '/payment'
     | '/research'
     | '/businesses/$slug'
     | '/global-presence/$slug'
@@ -303,6 +313,7 @@ export interface FileRouteTypes {
     | '/startups/$slug'
     | '/team/$slug'
     | '/businesses'
+    | '/global-presence'
     | '/investors'
     | '/mentors'
     | '/register'
@@ -317,7 +328,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/downloads'
     | '/funding-programme'
-    | '/global-presence'
+    | '/payment'
     | '/research'
     | '/businesses/$slug'
     | '/global-presence/$slug'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/startups/$slug'
     | '/team/$slug'
     | '/businesses/'
+    | '/global-presence/'
     | '/investors/'
     | '/mentors/'
     | '/register/'
@@ -346,9 +358,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
   FundingProgrammeRoute: typeof FundingProgrammeRoute
-  GlobalPresenceRoute: typeof GlobalPresenceRouteWithChildren
+  PaymentRoute: typeof PaymentRoute
   ResearchRoute: typeof ResearchRoute
   BusinessesSlugRoute: typeof BusinessesSlugRoute
+  GlobalPresenceSlugRoute: typeof GlobalPresenceSlugRoute
   InvestorsSlugRoute: typeof InvestorsSlugRoute
   MentorsSlugRoute: typeof MentorsSlugRoute
   RegisterBusinessRoute: typeof RegisterBusinessRoute
@@ -359,6 +372,7 @@ export interface RootRouteChildren {
   StartupsSlugRoute: typeof StartupsSlugRoute
   TeamSlugRoute: typeof TeamSlugRoute
   BusinessesIndexRoute: typeof BusinessesIndexRoute
+  GlobalPresenceIndexRoute: typeof GlobalPresenceIndexRoute
   InvestorsIndexRoute: typeof InvestorsIndexRoute
   MentorsIndexRoute: typeof MentorsIndexRoute
   RegisterIndexRoute: typeof RegisterIndexRoute
@@ -411,11 +425,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FundingProgrammeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/global-presence': {
-      id: '/global-presence'
-      path: '/global-presence'
-      fullPath: '/global-presence'
-      preLoaderRoute: typeof GlobalPresenceRouteImport
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/research': {
@@ -439,12 +453,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/global-presence/': {
+      id: '/global-presence/'
+      path: '/global-presence'
+      fullPath: '/global-presence/'
+      preLoaderRoute: typeof GlobalPresenceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/global-presence/$slug': {
       id: '/global-presence/$slug'
-      path: '/$slug'
+      path: '/global-presence/$slug'
       fullPath: '/global-presence/$slug'
       preLoaderRoute: typeof GlobalPresenceSlugRouteImport
-      parentRoute: typeof GlobalPresenceRoute
+      parentRoute: typeof rootRouteImport
     }
     '/investors/': {
       id: '/investors/'
@@ -554,18 +575,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface GlobalPresenceRouteChildren {
-  GlobalPresenceSlugRoute: typeof GlobalPresenceSlugRoute
-}
-
-const GlobalPresenceRouteChildren: GlobalPresenceRouteChildren = {
-  GlobalPresenceSlugRoute: GlobalPresenceSlugRoute,
-}
-
-const GlobalPresenceRouteWithChildren = GlobalPresenceRoute._addFileChildren(
-  GlobalPresenceRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -573,9 +582,10 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
   FundingProgrammeRoute: FundingProgrammeRoute,
-  GlobalPresenceRoute: GlobalPresenceRouteWithChildren,
+  PaymentRoute: PaymentRoute,
   ResearchRoute: ResearchRoute,
   BusinessesSlugRoute: BusinessesSlugRoute,
+  GlobalPresenceSlugRoute: GlobalPresenceSlugRoute,
   InvestorsSlugRoute: InvestorsSlugRoute,
   MentorsSlugRoute: MentorsSlugRoute,
   RegisterBusinessRoute: RegisterBusinessRoute,
@@ -586,6 +596,7 @@ const rootRouteChildren: RootRouteChildren = {
   StartupsSlugRoute: StartupsSlugRoute,
   TeamSlugRoute: TeamSlugRoute,
   BusinessesIndexRoute: BusinessesIndexRoute,
+  GlobalPresenceIndexRoute: GlobalPresenceIndexRoute,
   InvestorsIndexRoute: InvestorsIndexRoute,
   MentorsIndexRoute: MentorsIndexRoute,
   RegisterIndexRoute: RegisterIndexRoute,
