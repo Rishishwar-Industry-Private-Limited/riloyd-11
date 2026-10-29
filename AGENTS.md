@@ -29,3 +29,4 @@
 - Admin AI review summaries call the AI Gateway only from an admin-checked server function and exclude applicant contact details from the prompt, so private data stays minimal.
 - Store country programme fees in a public-readable, admin-write RLS table and validate changes through authenticated server functions; unknown fees stay null so the site never invents prices.
 - Keep international service scope and country context in one shared browser-safe module, with country pages under the existing dynamic market route and verified payment accounts on a separate route, so country navigation and programme pricing stay consistent.
+- Keep country-page editorial detail in a browser-safe content module and reusable presentation sections, with separately imported HD market artwork, so existing service facts can be adapted without duplicating fees or expanding overseas service scope.
