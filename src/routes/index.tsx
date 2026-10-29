@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { DeferredContent } from "@/components/deferred-content";
+import { siteStats } from "@/lib/site-stats";
 import {
   ArrowRight,
   BarChart3,

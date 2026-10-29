@@ -1,4 +1,5 @@
 import { BriefcaseBusiness, HandCoins, Lightbulb, UsersRound, type LucideIcon } from "lucide-react";
+import { siteStats } from "@/lib/site-stats";
 
 export type RegistrationCategory = "startup" | "mentor" | "investor" | "business";
 export type FieldOption = { label: string; value: string };
