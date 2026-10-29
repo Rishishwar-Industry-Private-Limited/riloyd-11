@@ -1,7 +1,8 @@
 import { CountryLogo } from "@/components/country-logo";
-import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BarChart3, Globe2, Handshake, MapPin, Menu, Network, PackageOpen, Target, TrendingUp, UsersRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { internationalServices } from "@/lib/international-programme";
 import { marketConfigs, marketOrder } from "@/lib/market-config";
 import globeImageAsset from "@/assets/local/global-globe.jpg.optimized.webp";
 const globeImage = globeImageAsset;
@@ -10,7 +11,7 @@ const mapImage = mapImageAsset;
 import boardroomImageAsset from "@/assets/local/global-boardroom.jpg.optimized.webp";
 const boardroomImage = boardroomImageAsset;
 
-export const Route = createFileRoute("/global-presence")({
+export const Route = createFileRoute("/global-presence/")({
   head: () => ({ meta: [
     { title: "Global Presence | Riloyd" },
     { name: "description", content: "Explore Riloyd's global presence across India, Britain, UAE, Canada, America, Singapore, Europe and Australia." },
@@ -25,27 +26,16 @@ export const Route = createFileRoute("/global-presence")({
 
 const markets = marketOrder.map((key) => marketConfigs[key]);
 
-const capabilities = [
-  { icon: Globe2, title: "Market Entry Support" },
-  { icon: Handshake, title: "Investor Connections" },
-  { icon: BarChart3, title: "Funding Guidance" },
-  { icon: UsersRound, title: "Strategic Partnerships" },
-  { icon: Target, title: "Local Insights" },
-  { icon: Network, title: "Cross-Border Thinking" },
-  { icon: PackageOpen, title: "Talent Solutions" },
-  { icon: TrendingUp, title: "Business Expansion" },
-];
+const capabilities = internationalServices.map((service, index) => ({ ...service, icon: [BarChart3, Handshake, UsersRound, Network][index] ?? Globe2 }));
 
 function GlobalPresence() {
-  const pathname = useRouterState({ select: state => state.location.pathname });
-  if (pathname !== "/global-presence" && pathname !== "/global-presence/") return <Outlet />;
   return <main className="overflow-hidden bg-background text-foreground">
     <section className="relative h-[431px] overflow-hidden border-b border-border bg-background sm:h-[442px]">
       <img src={globeImage} width={1600} height={912} alt="Earth at night with connections radiating from India" className="absolute inset-0 h-full w-full object-cover object-[57%_center] sm:object-center" decoding="async" fetchPriority="high" />
       <div className="global-hero-shade absolute inset-0" />
       <div className="relative z-10 mx-auto flex h-full max-w-[1380px] items-center px-5 py-5 sm:px-6 lg:px-12">
         <div className="max-w-xl"><p className="eyebrow text-xs font-bold uppercase text-soft">Global presence</p>
-          <h1 className="headline mt-3 text-[clamp(2.1rem,4vw,4rem)] font-black uppercase leading-[.94]">Local insight.<br /><span className="text-primary">Global impact.</span></h1>
+          <h1 className="headline mt-3 text-[clamp(2.1rem,4vw,4rem)] font-black uppercase leading-[.94]">Riloyd<br /><span className="text-primary">Global.</span></h1>
           <p className="mt-3 max-w-md text-xs leading-relaxed text-soft sm:text-sm">RILOYD connects businesses, investors and partners across borders to discover opportunities and build stronger enterprises.</p>
           <Button asChild className="mt-3 h-9 rounded-md px-4 text-[11px] font-bold"><a href="#markets">Explore Global Opportunities <ArrowRight size={15} /></a></Button>
         </div>
@@ -57,13 +47,14 @@ function GlobalPresence() {
     </div></section>
 
     <section className="border-b border-border bg-surface text-foreground"><div className="mx-auto grid max-w-[1380px] gap-6 px-5 py-12 sm:px-6 lg:grid-cols-[.38fr_.62fr] lg:items-center lg:gap-12 lg:px-12 lg:py-16">
-      <div><p className="eyebrow text-[11px] font-bold uppercase text-card-foreground">Our global network</p><h2 className="mt-4 text-3xl font-black uppercase leading-[.98] sm:text-4xl">Bridging opportunities <span className="text-primary">worldwide.</span></h2><p className="mt-5 max-w-sm text-sm leading-relaxed">From India to global markets, we look for connections in capital, partnerships, talent and market access.</p></div>
+      <div><p className="eyebrow text-[11px] font-bold uppercase text-card-foreground">Our global network</p><h2 className="mt-4 text-3xl font-black uppercase leading-[.98] sm:text-4xl">Bridging opportunities <span className="text-primary">worldwide.</span></h2><p className="mt-5 max-w-sm text-sm leading-relaxed">Outside India, our focus is Research & Strategy, Business Fundings & Grants, Manpower Services and Mentorship. Indian and international startups and ideas are welcome in our funding programme.</p></div>
       <img src={mapImage} width={1600} height={656} loading="lazy" alt="World map showing routes connecting India with other markets" className="w-full object-contain" decoding="async" />
     </div></section>
 
     <section id="markets" className="border-b border-border bg-background py-14 text-foreground sm:py-20"><div className="mx-auto max-w-[1380px] px-5 sm:px-6 lg:px-12">
       <p className="eyebrow text-[11px] font-bold uppercase text-soft">Our regional presence</p>
       <h2 className="mt-3 max-w-2xl text-3xl font-black uppercase leading-[1.02] sm:text-4xl">Growing together <span className="text-primary">across key markets.</span></h2>
+      <nav aria-label="Country tabs" className="mt-7 flex flex-wrap gap-2">{markets.map(market => <Button asChild variant="outline" key={market.slug}><Link to="/global-presence/$slug" params={{ slug: market.slug }}>{market.name}</Link></Button>)}</nav>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {markets.map((market) => <article key={market.name} className="overflow-hidden rounded-md border border-border bg-surface text-foreground shadow-sm">
           <img src={market.image} alt={market.landmark} width={400} height={456} loading="lazy" className="aspect-[1.5] w-full object-cover" decoding="async" />
