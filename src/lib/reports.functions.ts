@@ -4,6 +4,7 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { reportLookupSchema, reportMatches, reportMetadataSchema, validateReportFile } from "./report-schemas";
 
 export const findReport = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => reportLookupSchema.parse(input))
   .handler(async ({ data }) => {
     const { limitSubmission } = await import("./submissions.server");
