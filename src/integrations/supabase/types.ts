@@ -74,6 +74,27 @@ export type Database = {
         }
         Relationships: []
       }
+      country_programme_fees: {
+        Row: {
+          amount: number | null
+          country: string
+          currency: string
+          updated_at: string
+        }
+        Insert: {
+          amount?: number | null
+          country: string
+          currency: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number | null
+          country?: string
+          currency?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       customer_reports: {
         Row: {
           active: boolean
