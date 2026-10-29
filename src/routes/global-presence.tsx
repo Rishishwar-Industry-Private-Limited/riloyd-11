@@ -1,3 +1,4 @@
+import { CountryLogo } from "@/components/country-logo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BarChart3, Globe2, Handshake, MapPin, Menu, Network, PackageOpen, Target, TrendingUp, UsersRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -64,7 +65,7 @@ function GlobalPresence() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {markets.map((market) => <article key={market.name} className="overflow-hidden rounded-md border border-border bg-surface text-foreground shadow-sm">
           <img src={market.image} alt={market.landmark} width={400} height={456} loading="lazy" className="aspect-[1.5] w-full object-cover" decoding="async" />
-          <div className="px-4 pb-5 pt-4"><img src={market.logo} alt={`Riloyd ${market.name} logo`} loading="lazy" className={`h-12 w-auto max-w-full object-contain object-left ${market.logoTone === "light" ? "logo-show-dark" : "logo-show-light"}`} decoding="async" /><img src={market.logoAlt} alt="" aria-hidden="true" loading="lazy" className={`h-12 w-auto max-w-full object-contain object-left ${market.logoTone === "light" ? "logo-show-light" : "logo-show-dark"}`} decoding="async" /><h3 className="mt-4 text-base font-extrabold">{market.name}</h3><p className="mt-1 min-h-12 text-xs leading-relaxed text-muted-foreground">{market.description}</p><Link to="/global-presence/$slug" params={{ slug: market.slug }} aria-label={`Explore Riloyd ${market.name}`} className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-primary">Explore market <ArrowRight size={15} /></Link></div>
+          <div className="px-4 pb-5 pt-4"><CountryLogo market={market} className="h-12 w-auto max-w-full object-contain object-left" /><h3 className="mt-4 text-base font-extrabold">{market.name}</h3><p className="mt-1 min-h-12 text-xs leading-relaxed text-muted-foreground">{market.description}</p><Link to="/global-presence/$slug" params={{ slug: market.slug }} aria-label={`Explore Riloyd ${market.name}`} className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-primary">Explore market <ArrowRight size={15} /></Link></div>
         </article>)}
       </div>
     </div></section>
