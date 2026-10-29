@@ -65,7 +65,7 @@ export async function assessPrototype(request: Request) {
       } catch { if (!request.signal.aborted) emit({ type: "error", message: "The assessment was interrupted. No application was submitted." }); }
       finally { controller.close(); }
     },
-    cancel: () => iterator.return?.(),
+    cancel: async () => { await iterator.return?.(); },
   });
   const headers = getLovableAiGatewayResponseHeaders(undefined, { "Content-Type": "application/x-ndjson", "Cache-Control": "no-cache, no-store, no-transform" });
   const runId = gateway.getRunId();
