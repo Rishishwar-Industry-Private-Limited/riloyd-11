@@ -8,6 +8,13 @@
       "when": 1793259447912,
       "tag": "0000_prototype_ai_access_state",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793263968504,
+      "tag": "0001_restrict_profiles_and_logos_to_admins",
+      "breakpoints": true
     }
   ]
 }
