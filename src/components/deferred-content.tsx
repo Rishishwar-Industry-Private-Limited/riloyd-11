@@ -6,8 +6,12 @@ export function DeferredContent({ children, fallback = null, mode = "viewport", 
   const [ready, setReady] = useState(false);
   useEffect(() => {
     if (mode === "idle") {
-      const timer = window.setTimeout(() => setReady(true), 1500);
-      return () => window.clearTimeout(timer);
+      let idle: number | undefined;
+      const timer = window.setTimeout(() => {
+        if ("requestIdleCallback" in window) idle = window.requestIdleCallback(() => setReady(true), { timeout: 2000 });
+        else setReady(true);
+      }, 1500);
+      return () => { window.clearTimeout(timer); if (idle !== undefined) window.cancelIdleCallback(idle); };
     }
     const element = ref.current;
     if (!element) return;
