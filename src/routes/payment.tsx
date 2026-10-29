@@ -7,7 +7,7 @@ import { accountHolder, paymentAccounts } from "@/lib/payment-accounts";
 import { marketConfigs, marketOrder } from "@/lib/market-config";
 
 export const Route = createFileRoute("/payment")({
-  validateSearch: (search: Record<string, unknown>) => ({ country: marketOrder.find(key => key === search.country) ?? "usa" }),
+  validateSearch: (search: Record<string, unknown>) => ({ country: marketOrder.find(key => key === search["country"]) ?? "usa" }),
   head: () => ({ meta: [{ title: "Payment Account Details | Riloyd" }, { name: "description", content: "Verified Rishishwar Industry Private Limited payment account details for international Riloyd applicants." }, { property: "og:title", content: "Payment Account Details | Riloyd" }, { property: "og:description", content: "Country-specific bank details and payment methods for Riloyd programme registration." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }], links: [{ rel: "canonical", href: "https://riloyd-global-atlas.lovable.app/payment" }] }),
   component: PaymentPage,
 });
