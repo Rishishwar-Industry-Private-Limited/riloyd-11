@@ -3,7 +3,7 @@
 - [x] Add personalized AI prototype preparation advice using the founder's funding goal; verified a complete personalized response
 - [x] Verify existing backend tables, RLS, roles, functions, publishing trigger and private storage; enable email login
 - [ ] Provision requested admin account and verify admin actions: waiting for user to create the account through More → Users → Add user → Create new user
-- [ ] Further optimize website images and save a downloadable image archive
+- [x] Further optimize international photos and save an inspected downloadable archive of all 97 referenced website images
 - [ ] Push repository changes: direct Git push unavailable; user must check/connect Project settings → Git for managed sync
 
 - [x] Reduce initial scripts with route/component splitting and deferred nonessential tools
