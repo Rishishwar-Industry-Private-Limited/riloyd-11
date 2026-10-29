@@ -1,5 +1,5 @@
 import { CountryLogo } from "@/components/country-logo";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { ArrowRight, BarChart3, Globe2, Handshake, MapPin, Menu, Network, PackageOpen, Target, TrendingUp, UsersRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { marketConfigs, marketOrder } from "@/lib/market-config";
@@ -37,6 +37,8 @@ const capabilities = [
 ];
 
 function GlobalPresence() {
+  const pathname = useRouterState({ select: state => state.location.pathname });
+  if (pathname !== "/global-presence" && pathname !== "/global-presence/") return <Outlet />;
   return <main className="overflow-hidden bg-background text-foreground">
     <section className="relative h-[431px] overflow-hidden border-b border-border bg-background sm:h-[442px]">
       <img src={globeImage} width={1600} height={912} alt="Earth at night with connections radiating from India" className="absolute inset-0 h-full w-full object-cover object-[57%_center] sm:object-center" decoding="async" fetchPriority="high" />
