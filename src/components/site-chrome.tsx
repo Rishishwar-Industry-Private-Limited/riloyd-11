@@ -110,6 +110,13 @@ export function SiteFooter() {
             <p className="mt-2 xl:mt-1">Gincube Center, Motimal, Lashkar,<br />Gird, Gwalior &ndash; 474009</p>
           </div>
         </div>
+        <div className="mt-4 sm:hidden">
+          <h2 className="text-xs font-bold">Follow Us</h2>
+          <div className="mt-3 flex items-center gap-2">
+            <a className="social-link" href="https://www.linkedin.com/company/145354558" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on LinkedIn"><Linkedin className="h-4 w-4" aria-hidden="true" /></a>
+            <a className="social-link" href="https://www.instagram.com/riloyd.in/" target="_blank" rel="noopener noreferrer" aria-label="Riloyd on Instagram"><Instagram className="h-4 w-4" aria-hidden="true" /></a>
+          </div>
+        </div>
       </div>
       </div>
       <div className="order-7 col-span-3 sm:order-5 sm:col-span-2 xl:col-span-1"><h2 className="text-xs font-bold">Our Services</h2><div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">{serviceOrder.map((key) => { const service = serviceConfigs[key]; return service ? <Link key={key} to="/services/$slug" params={{ slug: service.slug }}>{service.shortTitle}</Link> : null; })}</div></div>
