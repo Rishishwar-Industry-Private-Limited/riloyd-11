@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { DeferredContent } from "@/components/deferred-content";
+import { siteStats } from "@/lib/site-stats";
 import {
   ArrowRight,
   BarChart3,
@@ -90,12 +91,7 @@ const services = [
   },
 ];
 
-const stats = [
-  ["₹150Cr+", "Funding Enabled"],
-  ["15+", "Industries Served"],
-  ["75+", "Businesses Advised"],
-  ["200+", "Startup Ideas Analyzed"],
-];
+const stats = siteStats;
 
 const strengths = [
   { icon: Target, title: "Strategic Advisory", copy: "From vision to execution" },

@@ -1,4 +1,5 @@
 import { BriefcaseBusiness, HandCoins, Lightbulb, UsersRound, type LucideIcon } from "lucide-react";
+import { siteStats } from "@/lib/site-stats";
 
 export type RegistrationCategory = "startup" | "mentor" | "investor" | "business";
 export type FieldOption = { label: string; value: string };
@@ -40,7 +41,7 @@ export const registrationConfigs: Record<RegistrationCategory, RegistrationConfi
     description: "Join Riloyd and get the right guidance, funding support, mentorship and strategic networks to scale your startup.", icon: Lightbulb,
     cardCopy: "Get the right guidance, funding support and strategic direction.", benefitsTitle: "Why register your startup?",
     benefits: ["Access to funding opportunities", "Mentorship from industry experts", "Strategic business guidance", "Investor network and pitch opportunities", "Support for market expansion", "Compliance and registration support"],
-    stats: [["500+", "Startups supported"], ["₹500Cr+", "Funding opportunities"], ["50+", "Active mentors"], ["10+", "Industries covered"]],
+    stats: [...siteStats],
     sections: [
       { title: "Founder Information", fields: [
         { name: "fullName", label: "Full Name", required: true, maxLength: 100 }, { name: "designation", label: "Designation", required: true, placeholder: "Founder, Co-Founder, CEO" },
@@ -70,7 +71,7 @@ export const registrationConfigs: Record<RegistrationCategory, RegistrationConfi
     description: "Join Riloyd’s mentor network and help startups, SMEs and businesses grow with practical expertise.", icon: UsersRound,
     cardCopy: "Share your experience. Guide the next generation of businesses.", benefitsTitle: "Why mentor with Riloyd?",
     benefits: ["Guide high-potential startups and SMEs", "Join a curated business ecosystem", "Share your industry expertise", "Connect with investors and founders", "Participate in exclusive events", "Create a lasting impact"],
-    stats: [["500+", "Startups supported"], ["200+", "Industry mentors"], ["10+", "Sectors"], ["1000+", "Connections"]],
+    stats: [...siteStats],
     sections: [
       { title: "Personal Information", fields: [
         { name: "fullName", label: "Full Name", required: true }, { name: "dateOfBirth", label: "Date of Birth", type: "date" }, { name: "email", label: "Email Address", type: "email", required: true }, { name: "phone", label: "Phone Number", type: "tel", required: true }, { name: "location", label: "Current Location", required: true }, { name: "linkedin", label: "LinkedIn Profile", type: "url" },
@@ -93,7 +94,7 @@ export const registrationConfigs: Record<RegistrationCategory, RegistrationConfi
     description: "Discover high-potential startups, SMEs and growth businesses. Partner with Riloyd to create measurable impact.", icon: HandCoins,
     cardCopy: "Discover high-potential businesses and growth opportunities.", benefitsTitle: "Why invest with Riloyd?",
     benefits: ["Access to curated, vetted opportunities", "End-to-end deal support and due diligence", "Diverse sectors and high-growth potential", "Transparent process and updates", "Strategic collaboration opportunities", "Create economic and social impact"],
-    stats: [["500+", "Startups in pipeline"], ["10+", "Industries"], ["200+", "Entrepreneurs connected"], ["3X", "Average growth potential"]],
+    stats: [...siteStats],
     sections: [
       { title: "Personal Information", fields: [
         { name: "fullName", label: "Full Name", required: true }, { name: "email", label: "Email Address", type: "email", required: true }, { name: "phone", label: "Phone Number", type: "tel", required: true }, { name: "location", label: "Current Location", required: true }, { name: "linkedin", label: "LinkedIn Profile", type: "url" }, { name: "investorType", label: "Investor Type", type: "select", required: true, options: ["Individual / Angel", "Family Office", "Venture Capital", "Corporate Investor", "Institutional Investor"].map(v=>({label:v,value:v})) },
@@ -114,7 +115,7 @@ export const registrationConfigs: Record<RegistrationCategory, RegistrationConfi
     description: "Get strategic guidance, funding support, market access and end-to-end advisory to take your business forward.", icon: BriefcaseBusiness,
     cardCopy: "Access expert advisory, funding, sales support and transformation.", benefitsTitle: "Why register your business?",
     benefits: ["Get expert business advisory", "Access funding opportunities", "Scale sales and market reach", "Improve operational efficiency", "Connect with industry experts", "Support for digital adoption", "Leverage government schemes"],
-    stats: [["1000+", "Businesses supported"], ["3X", "Average revenue growth"], ["PAN India", "Presence"], ["95%", "Client satisfaction"]],
+    stats: [...siteStats],
     sections: [
       { title: "Business / Company Information", fields: [
         { name: "businessName", label: "Business Name", required: true }, { name: "legalStructure", label: "Legal Structure", type: "select", required: true, options: ["Private Limited", "LLP", "Partnership", "Sole Proprietorship", "Public Limited", "Other"].map(v=>({label:v,value:v})) }, { name: "businessType", label: "Business Type", required: true }, { name: "registrationNumber", label: "CIN / UDYAM / GST Number", required: true }, { name: "establishmentYear", label: "Year of Establishment", required: true }, { name: "pan", label: "PAN Number", required: true }, { name: "registeredAddress", label: "Registered Address", type: "textarea", required: true }, { name: "website", label: "Website", type: "url" },
