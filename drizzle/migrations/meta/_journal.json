@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793250548950,
+      "tag": "0000_country_logo_management",
+      "breakpoints": true
+    }
+  ]
 }

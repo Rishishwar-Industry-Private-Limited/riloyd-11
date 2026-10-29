@@ -1,3 +1,4 @@
+import { CountryLogo } from "@/components/country-logo";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, Instagram, Linkedin, Menu, Moon, Sun } from "lucide-react";
@@ -87,7 +88,7 @@ export function SiteFooter() {
       <div className="order-10 col-span-6 mt-3 sm:order-10 sm:col-span-6 sm:mt-5 xl:col-start-1 xl:col-span-8 xl:row-start-2 xl:mt-1">
         <Link to="/global-presence" aria-label="Explore Riloyd Global presence" className="block w-fit"><img src={theme === "light" ? globalLight : globalGlossy} alt="Riloyd Global — explore our global presence" loading="lazy" className="h-11 w-auto max-w-full object-contain object-left" decoding="async" /></Link>
         <div className="mt-3 grid grid-cols-4 items-center gap-x-3 gap-y-3 xl:grid-cols-8">
-          {marketOrder.map((key) => { const market = marketConfigs[key]; return <Link key={key} to="/global-presence/$slug" params={{ slug: market.slug }} aria-label={`Explore Riloyd ${market.name}`} className="flex items-center justify-start"><img src={market.logo} alt={`Riloyd ${market.name} logo`} loading="lazy" className={`h-9 w-auto max-w-full object-contain object-left ${market.logoTone === "light" ? "logo-show-dark" : "logo-show-light"}`} decoding="async" /><img src={market.logoAlt} alt="" aria-hidden="true" loading="lazy" className={`h-9 w-auto max-w-full object-contain object-left ${market.logoTone === "light" ? "logo-show-light" : "logo-show-dark"}`} decoding="async" /></Link>; })}
+          {marketOrder.map((key) => { const market = marketConfigs[key]; return <Link key={key} to="/global-presence/$slug" params={{ slug: market.slug }} aria-label={`Explore Riloyd ${market.name}`} className="flex items-center justify-start"><CountryLogo market={market} className="h-9 w-auto max-w-full object-contain object-left" /></Link>; })}
         </div>
       </div>
       <div className="contents sm:order-9 sm:col-span-2 sm:block sm:min-w-0 xl:contents">

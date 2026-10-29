@@ -20,6 +20,7 @@
 - Keep the Global Presence experience in its own `/global-presence` route, but reach it only from the footer while it is unpublished: no header navigation item and no promoted links elsewhere, and `noindex` on both routes, so the pages stay out of sight until the user re-enables them.
 - Keep the full company story in a dedicated `/about` route, while the homepage retains only a short About teaser, so the navigation and metadata remain clear.
 - Keep market content centralized and render each country through `/global-presence/$slug`, so the hub and the footer country list stay consistent.
+- Manage country logo overrides in an admin-only RLS table and a restricted Storage bucket; a shared query/provider renders overrides across the footer and market pages with bundled artwork as fallback, and unsaved preview messages remain same-origin and parent-scoped.
 - Keep Investors, Mentors and Team as public pages; employee verification goes through security-definer database functions and admins manage records at `/admin`, so codes stay hashed and never reach the browser.
 - Optimize static images offline before serving them; preserve dimensions and transparency, use lossless compression for logos, and keep the original format when conversion would increase file size, so appearance stays consistent without runtime image processing.
 - Import static website images directly from local frontend asset files so managed Git sync includes the actual image bytes; retain unused historical CDN pointers without deleting hosted assets to preserve earlier deployments.

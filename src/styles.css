@@ -272,6 +272,17 @@
 .logo-show-light { display: none; }
 .light .logo-show-light { display: block; }
 
+.logo-preview-light {
+  --surface: oklch(0.94 0.004 80);
+  --foreground: oklch(0.16 0.005 40);
+  --border: oklch(0.81 0.005 80);
+}
+.logo-preview-dark {
+  --surface: oklch(0.085 0 0);
+  --foreground: oklch(0.985 0 0);
+  --border: oklch(0.25 0 0);
+}
+
 /* White card surfaces: supporting text reads black, not grey. */
 .bg-card {
   --muted-foreground: var(--card-foreground);

@@ -7,6 +7,7 @@ import { ProfilesAdmin } from "@/components/profiles-admin";
 import { SubmissionsAdmin } from "@/components/submissions-admin";
 import { ReportsAdmin } from "@/components/reports-admin";
 import { SetupAdmin } from "@/components/setup-admin";
+import { CountryLogosAdmin } from "@/components/country-logos-admin";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
