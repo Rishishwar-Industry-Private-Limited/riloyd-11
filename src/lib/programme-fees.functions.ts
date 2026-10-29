@@ -5,8 +5,8 @@ import type { Database } from "@/integrations/supabase/types";
 import { feeSchema, type ProgrammeFee } from "./international-programme";
 
 export const getProgrammeFees = createServerFn({ method: "GET" }).handler(async (): Promise<ProgrammeFee[]> => {
-  const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  const url = process.env["SUPABASE_URL"] ?? import.meta.env["VITE_SUPABASE_URL"];
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["SUPABASE_ANON_KEY"] ?? import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
   if (!url || !key) throw new Error("Registration fees are unavailable.");
   const client = createClient<Database>(url, key, { auth: { persistSession: false, autoRefreshToken: false }, global: { fetch: (input, init) => {
     const headers = new Headers(init?.headers);
