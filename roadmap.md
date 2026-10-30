@@ -1,5 +1,11 @@
 # Roadmap
 
+- [ ] Show only autoplay video in Event highlights on all screens
+- [ ] Activate requested admin and verify panel login
+- [ ] Save prototype submissions and server-generated AI output with consent; add admin list/details
+- [ ] Add known programme registration fees to admin view
+- [ ] Rename research page to Our Researchs and add clearly labelled sample reports
+
 - [x] Add personalized AI prototype preparation advice using the founder's funding goal; verified a complete personalized response
 - [x] Verify existing backend tables, RLS, roles, functions, publishing trigger and private storage; enable email login
 - [ ] Provision requested admin account and verify admin actions: waiting for user to create the account through More → Users → Add user → Create new user
