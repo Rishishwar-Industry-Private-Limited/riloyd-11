@@ -1,81 +1,36 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BarChart3, Building2, Download, Lightbulb, Rocket, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, BarChart3, Building2, FileText, Lightbulb, Rocket, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import researchImage from "@/assets/local/research-overview.png.optimized.webp";
 
 export const Route = createFileRoute("/research")({
   head: () => ({ meta: [
-    { title: "Our Research & Analysis | Riloyd" },
-    { name: "description", content: "Riloyd's research and analysis of startups, businesses and ideas — market studies, sector insights and downloadable research reports." },
-    { property: "og:title", content: "Our Research & Analysis | Riloyd" },
-    { property: "og:description", content: "In-depth research and analysis of startups, businesses and ideas, with downloadable Riloyd research reports." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
+    { title: "Our Researchs | Riloyd Startup & Business Insights" },
+    { name: "description", content: "Explore Riloyd research themes for startups, businesses and ideas, with clearly labelled illustrative sample reports." },
+    { property: "og:title", content: "Our Researchs | Riloyd" },
+    { property: "og:description", content: "Startup validation, business growth and funding readiness research, with illustrative sample reports." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
   ], links: [{ rel: "canonical", href: "/research" }] }), component: ResearchPage,
 });
 
-const focusAreas = [
-  { icon: Rocket, title: "Startups", text: "How early-stage ventures find product–market fit, raise capital and survive their first three years — studied across funding stages, sectors and cities." },
-  { icon: Building2, title: "Businesses", text: "Operational, financial and strategic analysis of running businesses — growth levers, margin structure, expansion readiness and turnaround signals." },
-  { icon: Lightbulb, title: "Ideas", text: "Screening and scoring of raw ideas before they become startups — market size, timing, competition and execution feasibility." },
+const samples = [
+  { id: "SAMPLE-01", category: "Startups", title: "From idea to a testable prototype", summary: "A practical framework for turning an early idea into a measurable experiment.", points: [["Problem clarity", "Define one target user and one recurring problem. Interview potential users without leading them toward your solution."], ["Prototype scope", "Build the smallest version that tests your riskiest assumption. Document what it can and cannot demonstrate."], ["Evidence & milestones", "Record user feedback, test failures and improvements. Link every budget item to a validation milestone."]] },
+  { id: "SAMPLE-02", category: "Businesses", title: "Business growth & expansion readiness", summary: "An illustrative review of the questions to answer before expanding a business.", points: [["Operational baseline", "Map current capacity, fulfilment reliability and customer experience before increasing demand."], ["Unit economics", "Review cost drivers, gross margin and working-capital requirements using your actual accounts."], ["Expansion decision", "Test a limited market entry with clear success criteria before committing to a larger investment."]] },
+  { id: "SAMPLE-03", category: "Ideas", title: "Idea validation & market opportunity", summary: "A structured starting point for evaluating the need, alternatives and feasibility.", points: [["Customer need", "Separate the underlying need from a preferred product feature. Look for evidence of existing workarounds."], ["Competitive alternatives", "Compare direct competitors and the option of doing nothing. Note differences in convenience, price and accessibility."], ["Feasibility", "Identify technical, regulatory and distribution assumptions. Prioritise the assumptions that could invalidate the idea."]] },
+  { id: "SAMPLE-04", category: "Startups", title: "Funding readiness & pitch preparation", summary: "A sample preparation brief for founders planning a funding conversation.", points: [["Use of funds", "Break the requested amount into specific costs and milestones. Explain the evidence each milestone will create."], ["Pitch evidence", "Distinguish measured results from projections. Support claims with traceable customer feedback and prototype tests."], ["Risk review", "State dependencies, ownership permissions and unresolved risks honestly. Funding remains subject to evaluation and written terms."]] },
 ];
-
-const researchThemes = [
-  { icon: TrendingUp, title: "Sector & market studies", text: "Demand, pricing and competition across the industries we advise." },
-  { icon: BarChart3, title: "Funding & valuation trends", text: "How rounds are priced, what investors pay for, and where valuations are heading." },
-  { icon: Rocket, title: "Startup success patterns", text: "What separates startups that scale from those that stall." },
-  { icon: Lightbulb, title: "Idea validation frameworks", text: "The checkpoints our analysts apply before an idea is backed." },
-];
-
+const areas = [{ icon: Rocket, title: "Startups", copy: "Prototype readiness, validation and funding preparation." }, { icon: Building2, title: "Businesses", copy: "Operational performance, commercial strategy and growth." }, { icon: Lightbulb, title: "Ideas", copy: "Problem discovery, market relevance and feasibility." }];
 function ResearchPage() {
+  const [category, setCategory] = useState("All");
+  const [selected, setSelected] = useState<string | null>(null);
+  const report = samples.find(item => item.id === selected);
   return <main className="bg-background text-foreground">
-    <section className="border-b border-border px-5 py-16 sm:px-6 sm:py-20 lg:px-12">
-      <div className="mx-auto max-w-[1100px]">
-        <p className="eyebrow text-xs font-bold uppercase">Riloyd insights</p>
-        <h1 className="mt-4 max-w-[900px] text-4xl font-black uppercase leading-[1.05] sm:text-5xl lg:text-6xl">
-          Research &amp; analysis of startups, businesses and ideas
-        </h1>
-        <p className="mt-6 max-w-[720px] text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Every Riloyd engagement feeds a growing body of research. We study what makes startups fundable, businesses valuable and ideas worth building — and publish our findings as reports you can download.
-        </p>
-        <Button asChild className="mt-8"><Link to="/downloads"><Download size={16} /> Download research reports</Link></Button>
-      </div>
-    </section>
-
-    <section className="border-b border-border px-5 py-14 sm:px-6 lg:px-12">
-      <div className="mx-auto max-w-[1100px]">
-        <h2 className="text-2xl font-black uppercase sm:text-3xl">What we study</h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {focusAreas.map(area => <article key={area.title} className="border border-border bg-card p-6">
-            <area.icon size={28} className="text-primary" />
-            <h3 className="mt-4 text-lg font-bold uppercase text-card-foreground">{area.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-card-foreground">{area.text}</p>
-          </article>)}
-        </div>
-      </div>
-    </section>
-
-    <section className="border-b border-border px-5 py-14 sm:px-6 lg:px-12">
-      <div className="mx-auto max-w-[1100px]">
-        <h2 className="text-2xl font-black uppercase sm:text-3xl">Research themes</h2>
-        <div className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
-          {researchThemes.map(theme => <div key={theme.title} className="flex gap-4 border-t border-border pt-5">
-            <theme.icon size={22} className="mt-0.5 shrink-0 text-primary" />
-            <div><h3 className="font-bold">{theme.title}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{theme.text}</p></div>
-          </div>)}
-        </div>
-      </div>
-    </section>
-
-    <section className="px-5 py-14 sm:px-6 lg:px-12">
-      <div className="mx-auto max-w-[1100px] border border-border bg-card p-8 sm:p-10">
-        <h2 className="text-2xl font-black uppercase text-card-foreground sm:text-3xl">Download our research reports</h2>
-        <p className="mt-4 max-w-[680px] text-sm leading-relaxed text-card-foreground sm:text-base">
-          Our published research reports, business studies and analysis papers are available in the Downloads centre. Enter the report number and publish date shared with you to download your copy.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild><Link to="/downloads"><Download size={16} /> Go to Downloads</Link></Button>
-          <Button asChild variant="outline"><Link to="/contact">Request a custom study</Link></Button>
-        </div>
-      </div>
-    </section>
+    <section className="border-b border-border px-5 py-12 sm:px-6 lg:px-12 lg:py-16"><div className="mx-auto max-w-[1100px]"><p className="eyebrow text-xs font-bold uppercase">Riloyd insights</p><h1 className="mt-4 text-4xl font-black sm:text-5xl">Our Researchs</h1><p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">Research on startups, businesses and ideas — from the first question to a clearer commercial decision.</p><img src={researchImage} alt="Research and strategy discussion at Riloyd" fetchPriority="high" className="mt-8 h-52 w-full rounded-md object-cover sm:h-72" /></div></section>
+    <section className="border-b border-border px-5 py-10 sm:px-6 lg:px-12"><div className="mx-auto grid max-w-[1100px] gap-6 sm:grid-cols-3">{areas.map(({ icon: Icon, title, copy }) => <div key={title} className="flex gap-4"><Icon className="shrink-0 text-primary" size={26} /><div><h2 className="text-lg font-bold">{title}</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{copy}</p></div></div>)}</div></section>
+    <section className="px-5 py-12 sm:px-6 lg:px-12"><div className="mx-auto max-w-[1100px]"><div className="flex flex-wrap items-end justify-between gap-5"><div><p className="eyebrow text-xs font-bold uppercase">Research library</p><h2 className="mt-3 text-2xl font-black sm:text-3xl">Sample reports</h2></div><BarChart3 className="text-primary" size={32} /></div><p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">Illustrative examples only — these are not published studies, verified findings or customer reports. No real client information is included.</p><div className="mt-6 flex flex-wrap gap-2" aria-label="Report categories">{["All", "Startups", "Businesses", "Ideas"].map(item => <Button key={item} variant={category === item ? "default" : "outline"} aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</Button>)}</div><div className="mt-7 grid gap-5 sm:grid-cols-2">{samples.filter(item => category === "All" || item.category === category).map(item => <article key={item.id} className="flex flex-col rounded-md border border-border bg-card p-6"><div className="flex items-center justify-between gap-3 text-xs font-bold text-primary"><span>{item.category}</span><span>Illustrative sample</span></div><FileText className="mt-5 text-muted-foreground" size={28} /><h3 className="mt-4 text-xl font-bold">{item.title}</h3><p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{item.summary}</p><Button className="mt-6 w-fit" variant="outline" onClick={() => setSelected(item.id)}>Read sample <ArrowRight size={16} /></Button></article>)}</div>
+    {report && <section aria-label="Sample report detail" className="mt-8 border-y border-border py-8"><div className="flex items-start justify-between gap-4"><div><p className="text-xs font-bold text-primary">{report.id} · Illustrative sample</p><h2 className="mt-3 text-2xl font-bold">{report.title}</h2></div><Button size="icon" variant="outline" aria-label="Close sample report" onClick={() => setSelected(null)}><X /></Button></div>{report.points.map(([title, copy]) => <div className="mt-6" key={title}><h3 className="font-bold">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{copy}</p></div>)}<p className="mt-6 text-xs text-muted-foreground">Sample guidance only. No original market research or investment recommendation is claimed.</p></section>}
+    </div></section>
+    <section className="border-t border-border bg-surface px-5 py-12 sm:px-6 lg:px-12"><div className="mx-auto max-w-[1100px]"><h2 className="text-2xl font-black">Need a study for your business?</h2><p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">Discuss your market, validation questions and research brief with the Riloyd team. Authorised customer reports remain in the separate Downloads centre.</p><div className="mt-6 flex flex-wrap gap-3"><Button asChild><Link to="/contact">Discuss a research brief <ArrowRight size={16} /></Link></Button><Button asChild variant="outline"><Link to="/downloads">Customer report downloads</Link></Button></div></div></section>
   </main>;
 }
