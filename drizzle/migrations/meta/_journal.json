@@ -15,6 +15,13 @@
       "when": 1793263968504,
       "tag": "0001_restrict_profiles_and_logos_to_admins",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793336469296,
+      "tag": "0002_prototype_submissions",
+      "breakpoints": true
     }
   ]
 }

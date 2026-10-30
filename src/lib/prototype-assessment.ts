@@ -7,6 +7,7 @@ export const prototypeAssessmentSchema = z.object({
   context: z.string().trim().min(15, "Add your India connection, age eligibility and ownership details.").max(2000),
   fundingGoal: z.string().trim().min(20, "Describe the funding amount, purpose and milestone in at least 20 characters.").max(2000),
   consent: z.literal(true),
+  saveSubmission: z.boolean().optional().default(false),
 }).strict();
 
 export function prototypeAssessmentInstructions() {

@@ -13,6 +13,7 @@ export function PrototypeAssessment() {
   const [context, setContext] = useState("");
   const [fundingGoal, setFundingGoal] = useState("");
   const [consent, setConsent] = useState(false);
+  const [saveSubmission, setSaveSubmission] = useState(false);
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [error, setError] = useState("");
@@ -22,7 +23,7 @@ export function PrototypeAssessment() {
 
   async function assess(event: React.FormEvent) {
     event.preventDefault();
-    const parsed = prototypeAssessmentSchema.safeParse({ idea, prototype, context, fundingGoal, consent });
+    const parsed = prototypeAssessmentSchema.safeParse({ idea, prototype, context, fundingGoal, consent, saveSubmission });
     if (!parsed.success) { setError(parsed.error.issues[0]?.message ?? "Please complete the form."); return; }
     const abort = new AbortController(); controller.current = abort;
     setLoading(true); setText(""); setError(""); setStatus("Reviewing your idea against the published criteria…");
@@ -34,6 +35,7 @@ export function PrototypeAssessment() {
         if (part.type === "text") { setText(previous => previous + (part.text ?? "")); setStatus("Assessment in progress…"); }
         if (part.type === "error") { setError(part.message ?? "The assessment could not finish."); setStatus(""); }
         if (part.type === "done") setStatus("Assessment complete — preliminary guidance only.");
+        if (part.type === "saved") setStatus("Assessment complete. Prototype details and AI guidance saved for Riloyd review.");
       });
     } catch (err) {
       if (abort.signal.aborted) setStatus("Assessment stopped — any partial guidance is incomplete.");
@@ -48,7 +50,8 @@ export function PrototypeAssessment() {
       <div className="space-y-2"><Label htmlFor="assessment-prototype">Prototype, progress &amp; next milestone</Label><Textarea id="assessment-prototype" value={prototype} onChange={event => setPrototype(event.target.value)} required minLength={30} maxLength={4000} rows={5} disabled={loading} placeholder="Idea, PoC or prototype? Describe evidence, what you will build or test, timeline and estimated budget." /></div>
       <div className="space-y-2"><Label htmlFor="assessment-funding">Funding goal &amp; use of funds</Label><Textarea id="assessment-funding" value={fundingGoal} onChange={event => setFundingGoal(event.target.value)} required minLength={20} maxLength={2000} rows={4} disabled={loading} placeholder="Amount and currency, what the funding will pay for, the milestone it will unlock, and your target timeline." /><p className="text-xs leading-relaxed text-muted-foreground">Get tailored budget, validation and pitch-preparation suggestions—not a funding offer.</p></div>
       <div className="space-y-2"><Label htmlFor="assessment-context">Eligibility context</Label><Textarea id="assessment-context" value={context} onChange={event => setContext(event.target.value)} required minLength={15} maxLength={2000} rows={3} disabled={loading} placeholder="India connection, whether you meet the age requirement, ownership or permission to use your idea, and availability to pitch." /></div>
-      <div className="flex items-start gap-3"><Checkbox id="assessment-consent" checked={consent} onCheckedChange={value => setConsent(value === true)} disabled={loading} /><Label htmlFor="assessment-consent" className="text-xs leading-relaxed text-muted-foreground">I agree to send these descriptions to the AI service for this assessment. I have excluded contact details, identification, trade secrets and private customer data. Riloyd does not save this assessment as an application.</Label></div>
+      <div className="flex items-start gap-3"><Checkbox id="assessment-consent" checked={consent} onCheckedChange={value => setConsent(value === true)} disabled={loading} /><Label htmlFor="assessment-consent" className="text-xs leading-relaxed text-muted-foreground">I agree to send these descriptions to the AI service for this assessment. I have excluded contact details, identification, trade secrets and private customer data.</Label></div>
+      <div className="flex items-start gap-3"><Checkbox id="assessment-save" checked={saveSubmission} onCheckedChange={value => setSaveSubmission(value === true)} disabled={loading} /><Label htmlFor="assessment-save" className="text-xs leading-relaxed text-muted-foreground">Save my prototype details, funding goal and completed AI guidance for private review by Riloyd admins. This does not register me for the programme or confirm funding.</Label></div>
       <div className="flex flex-wrap gap-3"><Button type="submit" disabled={loading || !consent}>{loading ? <LoaderCircle className="animate-spin" /> : <Sparkles />}{loading ? "Assessing…" : "Assess my idea"}</Button>{loading && <Button type="button" variant="outline" onClick={() => controller.current?.abort()}><Square />Stop</Button>}</div>
     </form>
     <div className="min-w-0 border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">

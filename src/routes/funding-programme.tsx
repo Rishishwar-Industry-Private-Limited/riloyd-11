@@ -367,7 +367,7 @@ function FundingProgramme() {
           </div>
           <div className="grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:auto-rows-[180px] md:grid-cols-4">
             <div className="relative col-span-2 row-span-2 overflow-hidden rounded-lg border border-border bg-background">
-              <ViewportVideo src={gatheringVideo.url} fallbackSrc={gatheringVideoWebm.url} poster={gatheringStage} className="h-full w-full object-cover" label="Highlights from the previous Riloyd startup gathering" />
+              <ViewportVideo src={gatheringVideo.url} fallbackSrc={gatheringVideoWebm.url} className="h-full w-full object-cover" label="Highlights from the previous Riloyd startup gathering" />
               <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">● Event highlights</span>
             </div>
             {[[gatheringPitch,"Founders pitching on the Riloyd stage"],[gatheringExpo,"Networking across the expo floor"],[gatheringRegistration,"Registration desk"],[gatheringBadges,"Startup, investor & mentor passes"],[gatheringHall,"The main summit hall"],[gatheringKit,"Participant welcome kit"]].map(([src,label], i) => (

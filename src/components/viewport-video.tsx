@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Defer offscreen footage; retain silent inline autoplay when it is visible. */
-export function ViewportVideo({ src, fallbackSrc, poster, label, className }: { src: string; fallbackSrc: string; poster: string; label: string; className?: string }) {
+export function ViewportVideo({ src, fallbackSrc, poster, label, className }: { src: string; fallbackSrc: string; poster?: string; label: string; className?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
   const [fallback, setFallback] = useState(false);
