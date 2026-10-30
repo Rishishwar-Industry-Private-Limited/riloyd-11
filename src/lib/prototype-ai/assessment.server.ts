@@ -22,6 +22,11 @@ export async function assessPrototype(request: Request) {
   const { data: blocked, error: stateError } = await supabaseAdmin.from("prototype_ai_access_state").select("status_code,message").eq("model_id", model).maybeSingle();
   if (stateError) return jsonError("AI availability could not be checked. Please contact the team.", 503);
   if (blocked) return jsonError(blocked.message, blocked.status_code);
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`prototype:${request.headers.get("cf-connecting-ip") ?? "guest"}`));
+  const keyHash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+  const { data: allowed, error: limitError } = await supabaseAdmin.rpc("consume_form_submission_limit", { _key_hash: keyHash });
+  if (limitError) return jsonError("Assessment availability could not be checked.", 503);
+  if (!allowed) return jsonError("Too many assessments. Please try again later.", 429);
   if (request.signal.aborted) return stopped();
   const failure = async (error: unknown) => {
     if (!(error instanceof GatewayError)) return { status: 503, message: "The AI connection failed. Your details have not been submitted as an application." };
@@ -47,6 +52,7 @@ export async function assessPrototype(request: Request) {
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       let hasText = false;
+      let output = "";
       let failed = false;
       const emit = (event: object) => { if (!cancelled && !request.signal.aborted) controller.enqueue(encoder.encode(JSON.stringify(event) + "\n")); };
       try {
@@ -54,12 +60,19 @@ export async function assessPrototype(request: Request) {
         while (true) {
           const part = await iterator.next(); if (part.done) break;
           const chunk = part.value;
-          if (chunk.type === "response.output_text.delta") { hasText = true; emit({ type: "text", text: chunk.delta }); }
+          if (chunk.type === "response.output_text.delta") { hasText = true; output += chunk.delta; emit({ type: "text", text: chunk.delta }); }
           if (chunk.type === "response.refusal.delta") { failed = true; emit({ type: "error", message: "The AI declined this assessment. No application was submitted." }); break; }
           if (chunk.type === "response.incomplete") { failed = true; emit({ type: "error", message: "The AI assessment is incomplete. No application was submitted." }); }
         }
         if (!hasText && !failed) emit({ type: "error", message: "The AI returned no assessment. Please contact the Riloyd team." });
-        else if (!failed) emit({ type: "done" });
+        else if (!failed) {
+          emit({ type: "done" });
+          if (input.saveSubmission && !cancelled && !request.signal.aborted) {
+            const { error } = await supabaseAdmin.from("prototype_submissions").insert({ idea: input.idea, prototype: input.prototype, funding_goal: input.fundingGoal, eligibility_context: input.context, ai_output: output });
+            if (error) emit({ type: "error", message: "Your assessment completed, but could not be saved. Please contact the team." });
+            else emit({ type: "saved" });
+          }
+        }
       } catch (error) { if (!abort.signal.aborted) { const result = await failure(error); emit({ type: "error", message: result.message }); } }
       finally { request.signal.removeEventListener("abort", cancelRequest); if (!cancelled) controller.close(); }
     },

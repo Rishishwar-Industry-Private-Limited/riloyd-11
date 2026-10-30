@@ -9,6 +9,7 @@ import { ReportsAdmin } from "@/components/reports-admin";
 import { SetupAdmin } from "@/components/setup-admin";
 import { CountryLogosAdmin } from "@/components/country-logos-admin";
 import { ProgrammeFeesAdmin } from "@/components/programme-fees-admin";
+import { PrototypeSubmissionsAdmin } from "@/components/prototype-submissions-admin";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
