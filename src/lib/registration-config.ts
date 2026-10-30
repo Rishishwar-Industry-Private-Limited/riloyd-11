@@ -27,7 +27,7 @@ export type RegistrationConfig = {
   cardCopy: string;
   benefitsTitle: string;
   benefits: string[];
-  stats: [string, string][];
+  stats: readonly (readonly [string, string])[];
   sections: RegistrationSection[];
 };
 
