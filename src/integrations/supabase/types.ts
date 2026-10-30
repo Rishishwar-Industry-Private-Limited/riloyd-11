@@ -284,6 +284,36 @@ export type Database = {
         }
         Relationships: []
       }
+      prototype_submissions: {
+        Row: {
+          ai_output: string
+          created_at: string
+          eligibility_context: string
+          funding_goal: string
+          id: string
+          idea: string
+          prototype: string
+        }
+        Insert: {
+          ai_output: string
+          created_at?: string
+          eligibility_context: string
+          funding_goal: string
+          id?: string
+          idea: string
+          prototype: string
+        }
+        Update: {
+          ai_output?: string
+          created_at?: string
+          eligibility_context?: string
+          funding_goal?: string
+          id?: string
+          idea?: string
+          prototype?: string
+        }
+        Relationships: []
+      }
       registration_applications: {
         Row: {
           admin_notes: string
