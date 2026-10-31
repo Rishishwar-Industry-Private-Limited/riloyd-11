@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Fix hidden icons on all four Business Funding cards
+- [x] Fix hidden icons on all four Business Funding cards
 - [x] Show only autoplay video in Event highlights on all screens
 - [x] Activate requested admin and verify panel login
 - [x] Save prototype submissions and server-generated AI output with consent; add admin list/details
