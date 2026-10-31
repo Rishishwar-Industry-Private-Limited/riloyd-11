@@ -1,14 +1,15 @@
 # Roadmap
 
-- [ ] Show only autoplay video in Event highlights on all screens
-- [ ] Activate requested admin and verify panel login
-- [ ] Save prototype submissions and server-generated AI output with consent; add admin list/details
-- [ ] Add known programme registration fees to admin view
-- [ ] Rename research page to Our Researchs and add clearly labelled sample reports
+- [ ] Fix hidden icons on all four Business Funding cards
+- [x] Show only autoplay video in Event highlights on all screens
+- [x] Activate requested admin and verify panel login
+- [x] Save prototype submissions and server-generated AI output with consent; add admin list/details
+- [x] Add known programme registration fees to admin view
+- [x] Rename research page to Our Researchs and add clearly labelled sample reports
 
 - [x] Add personalized AI prototype preparation advice using the founder's funding goal; verified a complete personalized response
 - [x] Verify existing backend tables, RLS, roles, functions, publishing trigger and private storage; enable email login
-- [ ] Provision requested admin account and verify admin actions: waiting for user to create the account through More → Users → Add user → Create new user
+- [x] Provision requested admin account and verify actual password login and protected admin actions
 - [x] Further optimize international photos and save an inspected downloadable archive of all 97 referenced website images
 - [ ] Push repository changes: direct Git push unavailable; user must check/connect Project settings → Git for managed sync
 
@@ -43,12 +44,12 @@
 - [x] Add verified payment account details page
 - [x] Verify public country/payment flows, mobile rendering and fee validation tests
 - [ ] Configure other overseas registration fees: waiting on user values, currently unannounced
-- [ ] Verify authenticated admin fee save/readback: blocked because no auth users/admin account exists
+- [x] Verify authenticated admin fee save/readback with the requested admin account
 
 - [x] Add admin country/theme logo upload and preview panel
 - [x] Secure saved logos and connect all website logo locations
 - [x] Verify theme selection, public rendering, image validation and database permissions
-- [ ] Verify authenticated upload and saved readback: blocked until the user creates an account and receives admin access (this database has no auth users)
+- [ ] Verify authenticated logo upload and saved readback: admin now available; needs a user-supplied replacement logo
 
 - [x] Update 6 country logos (Australia, Britain, UAE, Europe, Singapore, Canada) to new light-theme versions
 - [x] Verify light-theme logos in browser
