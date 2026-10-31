@@ -108,7 +108,7 @@ export function FundingDetail() {
               <article key={title} className="group relative overflow-hidden rounded-md border border-border">
                 <img src={img} alt={title} className="h-44 w-full object-cover" loading="lazy" decoding="async" />
                 <div className="bg-card p-6 text-card-foreground">
-                  <span className="-mt-12 mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary bg-background text-primary">
+                  <span className="relative z-10 -mt-12 mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-background text-primary">
                     <Icon size={22} />
                   </span>
                   <h3 className="text-lg font-extrabold">{title}</h3>
