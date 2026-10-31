@@ -41,6 +41,7 @@ import gatheringHall from "@/assets/local/gathering-hall.webp";
 import gatheringVideo from "@/assets/videos/funding-gathering-autoplay.mp4.asset.json";
 import gatheringVideoWebm from "@/assets/videos/funding-gathering-autoplay.webm.asset.json";
 import { ViewportVideo } from "@/components/viewport-video";
+import { RegistrationCountdown } from "@/components/registration-countdown";
 
 const ZOHOPUBLIC = "https://forms.zohopublic.in/RIPLSTORES/form/StartupIdeaRegistrationForm/formperma/1SNzTjiKwSF14T0BCEyJLvZCZDDowZl3NYWbAjpy1KE";
 
@@ -307,6 +308,7 @@ function FundingProgramme() {
       <InternationalEnrolment country={programmeCountry} />
 
       <Section kicker="India Fees & Free Benefits" title={<>Simple pricing, <span className="text-primary">stay covered</span></>}>
+        <div className="mx-auto mb-6 max-w-2xl"><RegistrationCountdown /></div>
         <div className="grid gap-4 lg:grid-cols-[1fr_1.6fr_1fr]">
           <div className="flex flex-col overflow-hidden rounded-lg border border-border bg-surface">
             <p className="border-b border-border bg-primary px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground">Registration Fee</p>
