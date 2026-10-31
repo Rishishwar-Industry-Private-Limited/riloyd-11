@@ -9,8 +9,8 @@ export const feeSchema = z.object({
 }).refine(row => row.currency === countryCurrencies[row.country], "Choose the country's currency.");
 export type ProgrammeFee = z.infer<typeof feeSchema>;
 export const indiaRegistrationOptions = [
-  { amount: 2999, maxPersons: 2, gstPercent: 18 },
-  { amount: 1499, maxPersons: 1, gstPercent: 18 },
+  { amount: 1499, maxPersons: 2, gstPercent: 18 },
+  { amount: 999, maxPersons: 1, gstPercent: 18 },
 ] as const;
 export function indiaRegistrationSummary() {
   return indiaRegistrationOptions.map(option => `₹${option.amount.toLocaleString("en-IN")}/- +${option.gstPercent}% GST · up to ${option.maxPersons} ${option.maxPersons === 1 ? "person" : "persons"} per startup/idea`).join("; ");
