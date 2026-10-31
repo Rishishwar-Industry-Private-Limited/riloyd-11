@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 import { countryCurrencies, displayFee, feeSchema, internationalServices, indiaRegistrationOptions } from "./international-programme";
 
 describe("International programme rules", () => {
-  it("offers India registration at 2999 for up to two persons with 18 percent GST", () => {
-    expect(indiaRegistrationOptions[0]).toEqual({ amount: 2999, maxPersons: 2, gstPercent: 18 });
+  it("offers India registration at 1499 for up to two persons with 18 percent GST", () => {
+    expect(indiaRegistrationOptions[0]).toEqual({ amount: 1499, maxPersons: 2, gstPercent: 18 });
   });
-  it("offers India registration at 1499 for up to one person with 18 percent GST", () => {
-    expect(indiaRegistrationOptions[1]).toEqual({ amount: 1499, maxPersons: 1, gstPercent: 18 });
+  it("offers India registration at 999 for up to one person with 18 percent GST", () => {
+    expect(indiaRegistrationOptions[1]).toEqual({ amount: 999, maxPersons: 1, gstPercent: 18 });
   });
   it("offers exactly the four overseas services", () => {
     expect(internationalServices.map(s => s.title)).toEqual(["Research & Strategy", "Business Fundings & Grants", "Manpower Services", "Mentorship"]);
