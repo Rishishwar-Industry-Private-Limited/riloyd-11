@@ -9,10 +9,9 @@ describe("Registration countdown", () => {
     const parts = countdownParts(new Date("2026-11-09T18:30:00.000Z"));
     expect(parts).toEqual({ days: 0, hours: 23, minutes: 59, seconds: 59, closed: false });
   });
-  it("reports ten full days remaining on 31 October 2026 IST evening", () => {
+  it("reports nine days and nearly 24 hours remaining on 31 October 2026 IST evening", () => {
     const parts = countdownParts(new Date("2026-10-31T18:30:00.000Z"));
-    expect(parts.days).toBe(10);
-    expect(parts.closed).toBe(false);
+    expect(parts).toEqual({ days: 9, hours: 23, minutes: 59, seconds: 59, closed: false });
   });
   it("marks registration closed at and after the deadline", () => {
     expect(countdownParts(new Date("2026-11-10T18:30:00.000Z")).closed).toBe(true);
